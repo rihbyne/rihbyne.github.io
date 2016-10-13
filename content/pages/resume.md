@@ -1,3 +1,4 @@
-Title: my resume for employer
-
-[Our Menu]({filename}/pdfs/resume.pdf)
+Title: resume
+Slug: my-cv
+Summary: resume belongs here
+[CV]({filename}/pdfs/resume.pdf)
