@@ -16,7 +16,7 @@ PYGMENTS_STYLE = 'monokai'
 ROBOTS = 'index, follow'
 
 #blog theming control
-THEME = 'themes/Flex'
+THEME = '../pelican-extras/pelican-themes/cid'
 PATH = 'content'
 TIMEZONE = 'Asia/Kolkata'
 DEFAULT_LANG = 'en'
@@ -60,7 +60,7 @@ CC_LICENSE = {
 
 COPYRIGHT_YEAR = 2016
 
-DEFAULT_PAGINATION = 5
+DEFAULT_PAGINATION = 2
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
