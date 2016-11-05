@@ -2,14 +2,14 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = 'Rihan Pereira'
+AUTHOR = u'Rihan Pereira'
 SITEURL = 'http://localhost:8113'
-SITENAME = 'ByneBits'
+SITENAME = u"ByneBits"
 SITETITLE = AUTHOR
-SITESUBTITLE = 'Software Engineer | Guitarist | Rookee Bassist'
+SITESUBTITLE = u"Software Engineer | Guitarist | Rookee Bassist"
 SITEDESCRIPTION = '%s\'s Thoughts and Writings' % AUTHOR
 SITELOGO = ''
-FAVICON = '/extra/favicon.ico'
+FAVICON = 'extra/favicon.ico'
 BROWSER_COLOR = '#333333'
 PYGMENTS_STYLE = 'monokai'
 
@@ -17,14 +17,21 @@ ROBOTS = 'index, follow'
 
 #blog theming control
 THEME = '../pelican-extras/pelican-themes/cid'
+TYPOGRAPHY=True
+
+OUTPUT_PATH = 'output'
 PATH = 'content'
+
 TIMEZONE = 'Asia/Kolkata'
+
+SITEFOOTER = u'Rihan &copy; 2016. Contents is <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.'
+
 DEFAULT_LANG = 'en'
 OG_LOCALE = 'en_US'
 LOCALE = 'en_US'
 
 DATE_FORMATS = {
-    'en': '%B %d, %Y'
+    'en': '%a %d %B %Y'
 }
 
 DEFAULT_DATE = 'fs'
