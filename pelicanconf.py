@@ -3,38 +3,59 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Rihan Pereira'
-SITEURL = 'http://localhost:8113'
-SITENAME = u"ByneBits"
-SITETITLE = AUTHOR
-SITESUBTITLE = u"Software Engineer | Guitarist | Rookee Bassist"
-SITEDESCRIPTION = '%s\'s Thoughts and Writings' % AUTHOR
+
+SITEURL = 'https://rihbyne.github.io'
+SITENAME = u"Rihan's log"
+SITESUBTITLE = u"Software Enthusiast | Guitarist | Rookee Bassist"
 SITELOGO = ''
-FAVICON = 'extra/favicon.ico'
-BROWSER_COLOR = '#333333'
-PYGMENTS_STYLE = 'monokai'
-
-ROBOTS = 'index, follow'
-
-#blog theming control
-THEME = '../pelican-extras/pelican-themes/cid'
-TYPOGRAPHY=True
-
-OUTPUT_PATH = 'output'
-PATH = 'content'
 
 TIMEZONE = 'Asia/Kolkata'
 
 SITEFOOTER = u'Rihan &copy; 2016. Contents is <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.'
 
+#SITETITLE = AUTHOR
+#SITEDESCRIPTION = '%s\'s Thoughts and Writings' % AUTHOR
+
+DEFAULT_CATEGORY = 'software'
+DEFAULT_DATE_FORMAT = '%a %d %B %Y'
+DEFAULT_DATE = 'fs'
+
+SUMMARY_MAX_LENGTH = 15
+
+#blog theming control
+THEME = '../pelican-extras/pelican-themes/cid'
+TYPOGRAPHY=True
+BROWSER_COLOR = '#333333'
+PYGMENTS_STYLE = 'monokai'
+
+OUTPUT_PATH = 'output'
+PATH = 'content'
+
+INDEX_URL = 'blog'
+INDEX_SAVE_AS = INDEX_URL+'/index.html'
+
+ARTICLE_URL = INDEX_URL+'/{slugs}'
+ARTICLE_SAVE_AS = ARTICLE_URL+'/index.html'
+
+page_dir = 'DIYs'
+PAGE_URL = page_dir+'/{slug}'
+PAGE_SAVE_AS = PAGE_URL+/index.html
+
+DEFAULT_PAGINATION = 10
+
+#DISQUS_SITENAME = 'rihbynelog'
+#GOOGLE_ANALYTICS = 'something'
+
+
+
+
+
+
 DEFAULT_LANG = 'en'
 OG_LOCALE = 'en_US'
 LOCALE = 'en_US'
 
-DATE_FORMATS = {
-    'en': '%a %d %B %Y'
-}
 
-DEFAULT_DATE = 'fs'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
