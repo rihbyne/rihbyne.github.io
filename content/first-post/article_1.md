@@ -1,10 +1,11 @@
 Title: Why you should consider taking Mathematics seriously?
+Date: 2011-07-02 22:35
 Slug: take-maths-seriously
 Tags: pelican, publishing
 Authors: Rihan Pereira
-Summary: Short version for index and feeds
+Summary: how it works
 
-This is the content of my super blog post.
+Does this change.This is the content of my super blog post.
 what else should I write here.This is the content of my super blog post.
 what else should I write here.This is the content of my super blog post.
 what else should I write here.This is the content of my super blog post.

@@ -4,10 +4,10 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Rihan Pereira'
 
-SITEURL = 'https://rihbyne.github.io'
+SITEURL = 'http://localhost:8113'
 SITENAME = u"Rihan's log"
 SITESUBTITLE = u"Software Enthusiast | Guitarist | Rookee Bassist"
-SITELOGO = ''
+#SITELOGO = 'extra/mstile-150x150.png'
 
 TIMEZONE = 'Asia/Kolkata'
 
@@ -34,28 +34,33 @@ PATH = 'content'
 INDEX_URL = 'blog'
 INDEX_SAVE_AS = INDEX_URL+'/index.html'
 
-ARTICLE_URL = INDEX_URL+'/{slugs}'
+ARTICLE_URL = INDEX_URL+'/{slug}'
 ARTICLE_SAVE_AS = ARTICLE_URL+'/index.html'
 
 page_dir = 'DIYs'
 PAGE_URL = page_dir+'/{slug}'
-PAGE_SAVE_AS = PAGE_URL+/index.html
+PAGE_SAVE_AS = PAGE_URL+'/index.html'
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 6
+
+COPYRIGHT_YEAR = 2016
 
 #DISQUS_SITENAME = 'rihbynelog'
 #GOOGLE_ANALYTICS = 'something'
 
+USE_CUSTOM_MENU = True
+CUSTOM_MENUITEMS = (('Blog', INDEX_URL),)
 
+# Blogroll
+SOCIAL = (('linkedin', 'http://getpelican.com/'),
+          ('github', 'http://python.org/'),
+          ('google', 'http://jinja.pocoo.org/'),
+          ('twitter', '#'),
+          ('rss', '#'),)
 
-
-
-
-DEFAULT_LANG = 'en'
-OG_LOCALE = 'en_US'
-LOCALE = 'en_US'
-
-
+#DEFAULT_LANG = 'en'
+#OG_LOCALE = 'en_US'
+#LOCALE = 'en_US'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -69,13 +74,6 @@ MAIN_MENU = True
 
 LINKS = (('Portfolio', 'http://localhost:8113'),)
 
-# Blogroll
-SOCIAL = (('linkedin', 'http://getpelican.com/'),
-          ('github', 'http://python.org/'),
-          ('google', 'http://jinja.pocoo.org/'),
-          ('twitter', '#'),
-          ('rss', '#'))
-
 MENUITEMS = (('Archives', '/archives.html'),
              ('Categories', '/categories.html'),
              ('Tags', '/tags.html'),)
@@ -86,9 +84,7 @@ CC_LICENSE = {
     'slug': 'by-sa'
 }
 
-COPYRIGHT_YEAR = 2016
 
-DEFAULT_PAGINATION = 2
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
@@ -116,13 +112,9 @@ SITEMAP = {
 STATIC_PATHS = ['extra', 'images', 'pdfs']
 
 EXTRA_PATH_METADATA = {
-    'extra/robots.txt': {'path': 'robots.txt'},
     'extra/favicon.ico': {'path': 'favicon.ico'},
-    'extra/htaccess': {'path': '.htaccess'}
+    'extra/human.txt': {'path': 'humans.txt'},
+    'extra/CNAME': {'path': 'CNAME'},
+    'extra/robots.txt': {'path': 'robots.txt'},
+    'extra/htaccess': {'path': '.htaccess'},
 }
-
-
-
-COLOPHON = True
-COLOPHON_TITLE = 'About'
-COLOPHON_CONTENT = "Mainly..."
