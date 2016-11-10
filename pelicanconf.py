@@ -41,6 +41,15 @@ page_dir = 'DIYs'
 PAGE_URL = page_dir+'/{slug}'
 PAGE_SAVE_AS = PAGE_URL+'/index.html'
 
+DRAFT_URL = 'drafts/{slug}'
+DRAFT_SAVE_AS = 'drafts/{slug}.html'
+
+CATEGORY_URL = 'category/{slug}'
+CATEGORY_SAVE_AS = 'category/{slug}.html'
+
+TAG_URL = 'tag/{slug}'
+TAG_SAVE_AS = 'tag/{slug}.html'
+
 DEFAULT_PAGINATION = 6
 
 COPYRIGHT_YEAR = 2016
