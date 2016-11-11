@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+LOAD_CONTENT_CACHE = False
+
 AUTHOR = u'Rihan Pereira'
 
 SITEURL = 'http://localhost:8113'
@@ -16,6 +18,7 @@ SITEFOOTER = u'Rihan &copy; 2016. Contents is <a href="http://creativecommons.or
 #SITETITLE = AUTHOR
 #SITEDESCRIPTION = '%s\'s Thoughts and Writings' % AUTHOR
 
+USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = 'software'
 DEFAULT_DATE_FORMAT = '%a %d %B %Y'
 DEFAULT_DATE = 'fs'
@@ -31,13 +34,18 @@ PYGMENTS_STYLE = 'monokai'
 OUTPUT_PATH = 'output'
 PATH = 'content'
 
+# source static dirs to be included in output dir
+STATIC_PATHS = ['extra', 'images', 'pdfs', 'downloadables', 'blog']
+ARTICLE_PATHS = ['blog']
+PAGE_PATHS = ['do-it-yourself']
+
 INDEX_URL = 'blog'
 INDEX_SAVE_AS = INDEX_URL+'/index.html'
 
 ARTICLE_URL = INDEX_URL+'/{slug}'
 ARTICLE_SAVE_AS = ARTICLE_URL+'/index.html'
 
-page_dir = 'DIYs'
+page_dir = 'do-it-yourself'
 PAGE_URL = page_dir+'/{slug}'
 PAGE_SAVE_AS = PAGE_URL+'/index.html'
 
@@ -58,14 +66,21 @@ COPYRIGHT_YEAR = 2016
 #GOOGLE_ANALYTICS = 'something'
 
 USE_CUSTOM_MENU = True
-CUSTOM_MENUITEMS = (('Blog', INDEX_URL),)
+CUSTOM_MENUITEMS = (('blog', INDEX_URL),
+                    ('resume', 'downloadables/resume.pdf'),
+                    ('reading', 'https://goodreads/com/rihbyne'),
+                    ('projects', '#'),
+                   )
 
-# Blogroll
-SOCIAL = (('linkedin', 'http://getpelican.com/'),
-          ('github', 'http://python.org/'),
-          ('google', 'http://jinja.pocoo.org/'),
-          ('twitter', '#'),
-          ('rss', '#'),)
+#social links
+SOCIAL = (('Github', 'https://github.com/rihbyne'),
+          ('Linkedin', 'https://linkedin.com/in/rihbyne'),
+          ('Soundcloud', 'https://soundcloud.com/rihbyne'),
+          ('Quora', 'https://quora.com/Rihan-Pereira'),
+          ('Twitter', 'https://twitter.com/rihbyne'),
+          ('YouTube', 'https://www.youtube.com/c/Rihan-Pereira'),)
+
+#CONTACT_EMAIL = "rihen234@gmail.com"
 
 #DEFAULT_LANG = 'en'
 #OG_LOCALE = 'en_US'
@@ -78,7 +93,7 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-USE_FOLDER_AS_CATEGORY = False
+USE_FOLDER_AS_CATEGORY = True
 MAIN_MENU = True
 
 LINKS = (('Portfolio', 'http://localhost:8113'),)
@@ -92,8 +107,6 @@ CC_LICENSE = {
     'version': '4.0',
     'slug': 'by-sa'
 }
-
-
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
@@ -116,9 +129,6 @@ SITEMAP = {
         'pages': 'monthly',
     }
 }
-
-# source static dirs to be included in output dir
-STATIC_PATHS = ['extra', 'images', 'pdfs']
 
 EXTRA_PATH_METADATA = {
     'extra/favicon.ico': {'path': 'favicon.ico'},
