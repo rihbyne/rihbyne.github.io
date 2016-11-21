@@ -37,7 +37,7 @@ PATH = 'content'
 # source static dirs to be included in output dir
 STATIC_PATHS = ['extra', 'images', 'pdfs', 'downloadables', 'blog']
 ARTICLE_PATHS = ['blog']
-PAGE_PATHS = ['do-it-yourself']
+PAGE_PATHS = ['doityourself']
 
 INDEX_URL = 'blog'
 INDEX_SAVE_AS = INDEX_URL+'/index.html'
@@ -45,7 +45,7 @@ INDEX_SAVE_AS = INDEX_URL+'/index.html'
 ARTICLE_URL = INDEX_URL+'/{slug}'
 ARTICLE_SAVE_AS = ARTICLE_URL+'/index.html'
 
-page_dir = 'do-it-yourself'
+page_dir = 'doityourself'
 PAGE_URL = page_dir+'/{slug}'
 PAGE_SAVE_AS = PAGE_URL+'/index.html'
 
@@ -68,8 +68,8 @@ COPYRIGHT_YEAR = 2016
 USE_CUSTOM_MENU = True
 CUSTOM_MENUITEMS = (('blog', INDEX_URL),
                     ('resume', 'downloadables/resume.pdf'),
-                    ('reading', 'https://goodreads/com/rihbyne'),
-                    ('projects', '#'),
+                    ('reading', 'https://goodreads.com/rihbyne'),
+                    ('DIYs', 'DIYs'),
                    )
 
 #social links
