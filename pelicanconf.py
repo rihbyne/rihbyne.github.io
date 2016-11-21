@@ -9,7 +9,9 @@ AUTHOR = u'Rihan Pereira'
 SITEURL = 'http://localhost:8113'
 SITENAME = u"Rihan's log"
 SITESUBTITLE = u"Software Enthusiast | Guitarist | Rookee Bassist"
-#SITELOGO = 'extra/mstile-150x150.png'
+SITELOGO = 'images/android-chrome-512x512.png'
+
+THUMBNAIL = 'images/img_2.jpg'
 
 TIMEZONE = 'Asia/Kolkata'
 
