@@ -28,7 +28,7 @@ DEFAULT_DATE = 'fs'
 SUMMARY_MAX_LENGTH = 15
 
 #blog theming control
-THEME = '../pelican-extras/pelican-themes/cid'
+THEME = 'cid'
 TYPOGRAPHY=True
 BROWSER_COLOR = '#333333'
 PYGMENTS_STYLE = 'monokai'

@@ -27,6 +27,51 @@ width:85%;
     float: left;
     width: 100%;
 }
+.img-cont{
+    width: 35%;
+    float: left;
+}
+.img-cont img {
+    width: 85%;
+    height: auto
+}
+.landing-container header h1 {
+    font-size: 4em;
+    margin: 0.4em 0 0.1em 0;
+}
+header p {
+	margin:10px 0;
+}
+.cont-wrap{
+	width: 60%;/* margin-left: 50%; *//* border: 1px solid #000; */ float: left;
+}
+.cont-wrap h1 {
+	margin:0 0 10px 0;
+}
+@media only screen and (max-width: 640px) {
+	.landing-container , .cont-wrap{
+	    width: 100%;
+	}
+	.img-cont{
+	    width: 100%;
+	    float: left;
+	}
+	.img-cont img {
+	    width: 100%;
+	    height: auto
+	}
+	.landing-container header h1 , .cont-wrap h1{
+	    font-size: 2em;
+	    margin: 0.2em 0 0 0 ;
+	}
+	header p , .cont-wrap p {
+		margin:0 0 10px 0;
+	}
+	.landing-container ul{
+		margin-bottom: 0;
+	}
+	
+}
 </style><div class="container">
         <div class="landing-container">
             <header>
@@ -34,10 +79,9 @@ width:85%;
                 <p>{% if SITESUBTITLE %} {{ SITESUBTITLE }} {% endif %}</p>
             </header>
 	          <div>
-		           <div style="width: 35%;float: left;/* border: 1px solid red; */">
+		           <div class="img-cont" >
 			         <div>
-				           <img src="{{ SITEURL }}/{{ THUMBNAIL }}" style="    width: 85%;
-    height: auto;" />
+				           <img src="{{ SITEURL }}/{{ THUMBNAIL }}" style="    ;" />
 			         </div>		
 			         <div>
                    <ul class="quick-links">
@@ -59,11 +103,11 @@ width:85%;
                     </a></li>
                    {% endfor %}
                    {% include 'email.html' %}
-                   </ul>				
+                   </ul>
 			          </div>
 		            </div>
-		            <div style="width: 60%;/* margin-left: 50%; *//* border: 1px solid #000; */ float: left;">
-			          <h1>ioghsgsgnsjhgjk</h1>
+		            <div class="cont-wrap">
+			          <h1>About Me!</h1>
 <p>Posted on Nov 11 2016 17:06 in geology • Tagged with pelican , test , testing • 1 min read play with pelican for a while. I think its taking too much of your time ..Posted on Nov 11 2016 17:06 in geology • Tagged with pelican , test , testing • 1 min read play with pelican for a while. I think its taking too much of your time ..Posted on Nov 11 2016 17:06 in geology • Tagged with pelican , test , testing • 1 min read play with pelican for a while. I think its taking too much of your time ..Posted on Nov 11 2016 17:06 in geology • Tagged with pelican , test , testing • 1 min read play with pelican for a while. I think its taking too much of your time ..</p>
 		            </div>
 	         </div> </div>
