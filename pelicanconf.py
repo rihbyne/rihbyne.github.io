@@ -6,7 +6,7 @@ LOAD_CONTENT_CACHE = False
 
 AUTHOR = u'Rihan Pereira'
 
-SITEURL = 'https://rihbyne.github.io:8113'
+SITEURL = 'http://localhost:8113'
 SITENAME = u"Rihan's log"
 SITESUBTITLE = u"Software Enthusiast | Guitarist | Rookee Bassist"
 SITELOGO = 'images/android-chrome-512x512.png'
