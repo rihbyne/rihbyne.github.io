@@ -30,10 +30,12 @@ margin-right:25px;
       <p>{% if SITESUBTITLE %} {{ SITESUBTITLE }} {% endif %}</p>
     </div>
   </div>
-    <nav>
-        <a href="{{ SITEURL }}/{{ INDEX_URL }}">INDEX</a>
-        <a href="{{ SITEURL }}/archives">ARCHIVES</a>
-        <a href="{{ SITEURL }}/categories">CATEGORIES</a>
-        <a href="{{ SITEURL }}/tags">TAGS</a>
-    </nav>
+        {% if not page %}
+        <nav>
+           <a href="{{ SITEURL }}/{{ INDEX_URL }}">INDEX</a>
+           <a href="{{ SITEURL }}/archives">ARCHIVES</a>
+           <a href="{{ SITEURL }}/categories">CATEGORIES</a>
+           <a href="{{ SITEURL }}/tags">TAGS</a>
+       </nav>
+       {% endif %}
 </header>

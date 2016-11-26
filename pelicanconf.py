@@ -11,7 +11,7 @@ SITENAME = u"Rihan's log"
 SITESUBTITLE = u"Software Enthusiast | Guitarist | Rookee Bassist"
 SITELOGO = 'images/android-chrome-512x512.png'
 
-THUMBNAIL = 'images/img_2.jpg'
+THUMBNAIL = 'images/selfie_landing.jpg'
 
 TIMEZONE = 'Asia/Kolkata'
 
@@ -48,7 +48,7 @@ ARTICLE_URL = INDEX_URL+'/{slug}'
 ARTICLE_SAVE_AS = ARTICLE_URL+'/index.html'
 
 page_dir = 'doityourself'
-PAGE_URL = page_dir+'/{slug}'
+PAGE_URL = 'DIYs'+'/{slug}'
 PAGE_SAVE_AS = PAGE_URL+'/index.html'
 
 DRAFT_URL = 'drafts/{slug}'

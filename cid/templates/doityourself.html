@@ -2,26 +2,49 @@
 
 {% block container %}
 
-        <div class="landing-container">
-            <header>
-                <h1 class="landing-header">{{ SITENAME }}</h1>
-                <p>{% if SITESUBTITLE %} {{ SITESUBTITLE }} {% endif %}</p>
+        <div class="container">
+             <style rel="text/css">
+                .site-logo{   max-width: 110px;
+                  float: left;
+              }
+              .container .blog-header h1 , .container .blog-header p {
+              }
+              .container .blog-header h1 {
+                  display: inline-block;
+              }
+              .site-logo img {
+                  width: 100%;
+                  max-width: 110px;
+                  height: auto;
+                  margin-right:25px;
+              }
+              </style>
+            <header class="blog-header">
+                <div class="header-container" style="height: auto">
+                   <div class="site-logo" >
+                     {% if SITELOGO %}
+                      <img  src="{{ SITEURL }}/{{ SITELOGO }}" height="200px">
+                     {% endif %}
+                   </div>
+                   <div>
+                     <h1>
+                      <a href="{{ SITEURL }}">{{ SITENAME }}</a>
+                     </h1>
+                     <p>{% if SITESUBTITLE %} {{ SITESUBTITLE }} {% endif %}</p>
+                   </div>
+                 </div>
             </header>
-            <ul class="nav">
-                    {% for page in PAGES %}
-                        <li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
-                    {% endfor %}
-                {% include 'email.html' %}
-            </ul>
-            <footer>
-                <p class="disclaimer">
-                {% if SITEFOOTER %}
-                    {{ SITEFOOTER }}
-                {% else %}
-                Built with <a href="http://getpelican.com">Pelican</a>, and <a href="https://github.com/hdra/Pelican-Cid">Cid</a> theme.
-                {% endif %}
-                </p>
-            </footer>
-        </div>
+            <div class="post-list">
+                 {% for page in PAGES %}
+                     <article class="post-overview">
+                       {% if page.title not in ['test', 'Landing'] %}
+                         <h2><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></h2>
+                         <div class="excerpt">{{ page.summary }}</div>
+                       {% endif %}
+                     </article>
+                 {% endfor %}
+            </div>
+            {% include "footer.html" %} 
+        </div> <!-- end container -->
 
 {% endblock container %}

@@ -97,13 +97,13 @@ header p {
 		           <div class="img-cont" >
 			         <div class="abt-me">
 				           <img src="{{ SITEURL }}/{{ THUMBNAIL }}" style="    ;" />
-			         </div>		
+			         </div>
 			         <div>
                    <ul class="quick-links">
                    {% if USE_CUSTOM_MENU %}
                     {% for name, url in CUSTOM_MENUITEMS %}
                         {% if name == 'reading' %}
-                            <li><a href="{{ url }}">{{ name }}</a></li>
+                            <li><a href="{{ url }}" target="_blank">{{ name }}</a></li>
                         {% else %}
                             <li><a href="{{ SITEURL }}/{{ url }}">{{ name }}</a></li>
                         {% endif %}
