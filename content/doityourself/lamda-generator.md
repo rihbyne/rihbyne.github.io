@@ -1,4 +1,5 @@
 title: The making of Lambda Generator
+Date:2013-05-24 21:40
 Slug: the-lambda-generator
 summary: I designed a lambda generator used in programs for getting stuff done
 
