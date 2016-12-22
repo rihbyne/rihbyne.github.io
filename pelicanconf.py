@@ -60,7 +60,7 @@ CATEGORY_SAVE_AS = 'category/{slug}.html'
 TAG_URL = 'tag/{slug}'
 TAG_SAVE_AS = 'tag/{slug}.html'
 
-DEFAULT_PAGINATION = 6
+DEFAULT_PAGINATION = 5
 
 COPYRIGHT_YEAR = 2016
 
