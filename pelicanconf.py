@@ -37,7 +37,7 @@ OUTPUT_PATH = 'output'
 PATH = 'content'
 
 # source static dirs to be included in output dir
-STATIC_PATHS = ['extra', 'images', 'pdfs', 'downloadables', 'blog']
+STATIC_PATHS = ['extra', 'images', 'downloadables', 'blog']
 ARTICLE_PATHS = ['blog']
 PAGE_PATHS = ['doityourself']
 
