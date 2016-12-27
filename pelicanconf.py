@@ -37,7 +37,7 @@ OUTPUT_PATH = 'output'
 PATH = 'content'
 
 # source static dirs to be included in output dir
-STATIC_PATHS = ['extra', 'images', 'pdfs', 'downloadables', 'blog']
+STATIC_PATHS = ['extra', 'images', 'downloadables', 'blog']
 ARTICLE_PATHS = ['blog']
 PAGE_PATHS = ['doityourself']
 
@@ -60,7 +60,7 @@ CATEGORY_SAVE_AS = 'category/{slug}.html'
 TAG_URL = 'tag/{slug}'
 TAG_SAVE_AS = 'tag/{slug}.html'
 
-DEFAULT_PAGINATION = 6
+DEFAULT_PAGINATION = 5
 
 COPYRIGHT_YEAR = 2016
 
