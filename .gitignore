@@ -1,6 +1,8 @@
 lib
+share
 lib64
 include
 bin
 __pycache__
-output/*
+local
+pip-selfcheck.json
