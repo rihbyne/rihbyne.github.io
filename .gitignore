@@ -6,3 +6,4 @@ bin
 __pycache__
 local
 pip-selfcheck.json
+output
