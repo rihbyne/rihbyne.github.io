@@ -11,11 +11,11 @@ SITENAME = u"Rihan's log"
 SITESUBTITLE = u"Software Enthusiast | Guitarist | Rookee Bassist"
 SITELOGO = 'images/android-chrome-512x512.png'
 
-THUMBNAIL = 'images/selfie_landing.jpg'
+THUMBNAIL = 'images/lattern.jpg'
 
 TIMEZONE = 'Asia/Kolkata'
 
-SITEFOOTER = u'Rihan &copy; 2016. Contents is <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.'
+SITEFOOTER = u'Rihan &copy; 2017. Contents is <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.'
 
 #SITETITLE = AUTHOR
 #SITEDESCRIPTION = '%s\'s Thoughts and Writings' % AUTHOR
@@ -48,7 +48,7 @@ ARTICLE_URL = INDEX_URL+'/{slug}'
 ARTICLE_SAVE_AS = ARTICLE_URL+'/index.html'
 
 page_dir = 'doityourself'
-PAGE_URL = 'DIYs'+'/{slug}'
+PAGE_URL = 'DIY'+'/{slug}'
 PAGE_SAVE_AS = PAGE_URL+'/index.html'
 
 DRAFT_URL = 'drafts/{slug}'
@@ -69,9 +69,9 @@ DISQUS_SITENAME = 'swlogs'
 
 USE_CUSTOM_MENU = True
 CUSTOM_MENUITEMS = (('blog', INDEX_URL),
+                    ('DIY', 'DIY'),
                     ('resume', 'downloadables/resume.pdf'),
                     ('reading', 'https://goodreads.com/rihbyne'),
-                    ('DIYs', 'DIYs'),
                    )
 
 #social links
