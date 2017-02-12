@@ -8,3 +8,10 @@ Summary: This post reviews the Focusrite 4 channel audio interface that I bought
 Talk about the audio interface and how will it serve you well. It should really be worthy for the cause
 you have purchased it for.
 
+Back Panel:
+------------
+<img src="../../images/soundgear/focusrite_back.jpg" width="850" height="450">
+
+Front Panel:
+-------------
+<img src="../../images/soundgear/focusrite_front1.jpg" width="850" height="450">
