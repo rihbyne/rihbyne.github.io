@@ -5,10 +5,10 @@ Tags: nodejs, postgresql, generators, btc, satoshi, kelly criteron
 Authors: Rihan Pereira
 Summary: A case study on the moneypot project - its design, architecture
 
-Moneypot is a bitcoin wallet but not a full fledge hot wallet out there like blockchain’s “my wallet” or
-coinbase’s wallet.Money wallet handles bitcoin money for its users. Usually, all the transactions take place
-in __bits(1BTC = 106)__ or __satoshi(1BTC = 108)__. Besides this, Moneypot  serves as a platform for application
-developers who make gambling games to handle the mathematics behinding casino logic, the betting criteria,
+[Moneypot](http://moneypot.com/) is a bitcoin wallet but not a full fledge hot wallet out there like blockchain’s
+“my wallet” or coinbase’s wallet. Money wallet handles bitcoin money for its users. Usually, all the transactions
+take place in __bits(1BTC = 106)__ or __satoshi(1BTC = 108)__. Besides this, Moneypot  serves as a platform for
+application developers who make gambling games to handle the mathematics behinding casino logic, the betting criteria,
 user authentication,etc. Before any app can use Moneypot services, that particular app is approved and
 authorized  by Moneypot and then the services are made available.Since, Moneypot act as a bitcoin fund
 manager.It can be used to receive bitcoins from cold storage using cold addresses or from existing hot

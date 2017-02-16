@@ -115,7 +115,7 @@ CC_LICENSE = {
 
 #plugins control
 PLUGIN_PATHS = ['../pelican-extras/pelican-plugins']
-PLUGINS = ['sitemap', 'post_stats', 'extract_toc', 'render_math']
+PLUGINS = ['sitemap', 'post_stats', 'extract_toc', 'render_math', 'pelican_youtube']
 MD_EXTENSIONS = ['codehilite', 'extra', 'smarty', 'toc']
 
 SITEMAP = {

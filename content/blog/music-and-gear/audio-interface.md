@@ -3,7 +3,7 @@ Date: 2016-06-07 17:00
 Slug: usb-audio-interface
 Tags: audio processing, soundcard, midi, recording
 Authors: Rihan Pereira
-Summary: This post reviews the Focusrite 4 channel audio interface that I bought for recording instruments
+Summary: This post reviews the Focusrite 6 I/O channel audio interface that I bought for recording instruments
 
 Audio Interface is a useful device for connecting, consolidating multiple musical instruments and route them
 all to audio recording software, also called as Digital Audio WorkStation(DAW).
