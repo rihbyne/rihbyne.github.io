@@ -8,7 +8,7 @@ AUTHOR = u'Rihan Pereira'
 
 SITEURL = 'http://localhost:8113'
 SITENAME = u"Rihan's log"
-SITESUBTITLE = u"Software Enthusiast | Guitarist | Rookee Bassist"
+SITESUBTITLE = u"collection of my articles & a project catalog"
 SITELOGO = 'images/android-chrome-512x512.png'
 
 THUMBNAIL = 'images/lattern.jpg'
