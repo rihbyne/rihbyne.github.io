@@ -7,8 +7,8 @@ LOAD_CONTENT_CACHE = False
 AUTHOR = u'Rihan Pereira'
 
 SITEURL = 'http://localhost:8113'
-SITENAME = u"Rihan's log"
-SITESUBTITLE = u"A streaming collection of my articles & a project catalog with respect to time"
+SITENAME = u"swlogs"
+SITESUBTITLE = u"collection of articles & a project catalog with respect to time"
 SITELOGO = 'images/android-chrome-512x512.png'
 
 THUMBNAIL = 'images/lattern.jpg'

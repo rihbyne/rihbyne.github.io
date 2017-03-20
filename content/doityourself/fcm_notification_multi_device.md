@@ -4,3 +4,5 @@ Slug: multi-device-fcm
 Summary: Utilizing Firebase Push Messaging Technology to logically forward messages to users on multiple logged-in devices.
 
 Firebase Cloud Messaging(FCM) is the goto platform for enabling push notifications on mobile devices
+
+![model\_diagram]({attach}../../images/gsoc_model_diagram1.png)
