@@ -135,14 +135,13 @@ header img {
 			         <div class="abt-me">
 				           <img src="{{ SITEURL }}/{{ THUMBNAIL }}" style="    ;" />
 			         </div>
-			         
 		            </div>
 		            <div class="cont-wrap">
                   <div>
                    <ul class="quick-links">
                    {% if USE_CUSTOM_MENU %}
                     {% for name, url in CUSTOM_MENUITEMS %}
-                        {% if name == 'reading' %}
+                        {% if name == 'Reading' %}
                             <li><a href="{{ url }}" target="_blank">{{ name }}</a></li>
                         {% else %}
                             <li><a href="{{ SITEURL }}/{{ url }}">{{ name }}</a></li>
@@ -163,11 +162,12 @@ header img {
 			            </div>
 			          <h1>About Me!</h1>
                 <p>
-                    I am Rihan(<em>Rihen</em>) Pereira. I to write about my accidental discoveries, maybe
-                    how I solved that
+                  Hi, I am Rihan(<em>Rihen</em>) Pereira. On this site, I write about my accidental
+                  discoveries, maybe how I solved that
                     software engineering problem or things I do outside of my profession. In case if
                     you are wondering - "Why swlogs.me? and not use third-party
-                    tool" - You never know when they will shut down and then you have to migrate.
+                  tool instead" - You never know when they will stop shipping up-to-date software
+                  and then you have to dump it and look for other one. Its a never ending cycle.
                 </p>
 		            </div>
 	         </div> </div>

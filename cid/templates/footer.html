@@ -3,7 +3,7 @@
     <ul class="nav">
         {% if USE_CUSTOM_MENU %}
             {% for name, url in CUSTOM_MENUITEMS %}
-                {% if name == 'reading' %}
+                {% if name == 'Reading' %}
                     <li><a href="{{ url }}" target="_blank">{{ name }}</a></li>
                 {% else %}
                     <li><a href="{{ SITEURL }}/{{ url }}">{{ name }}</a></li>

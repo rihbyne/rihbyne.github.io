@@ -1,17 +1,21 @@
-Title: Application log maintainence
+Title: Application logging 
 Date: 2016-09-13 23:18
 Slug: appln-logging
 Summary: Logging in server-side applications the right way
 
-Fundamentally applications should be capable of logging to stdout by default. As an extra step, logs can be
+Loggging is considered as one of the many must have factor in 12-factor Apps. Fundamentally applications should be capable of logging to stdout by default. As an extra step, logs can be
 pipped to a file as a stream. When logs are streamed to a file during application runtime it does not have 
-start and end of file like a normal file instead its a flow of data similar to flow of water. Log stream
+start and end of file like a normal file instead its a flow of data similar to flow of water. A stream log 
 is an established practice in large software firms. Sophisticated logging tools like Syslog allows anyone
 to centralize logging data from distributed services. 
 
 ![model\_diagram]({attach}../images/diy/logging.png)
 
-Logs can be processed by Analytics & Monitoring tools to gain insights & predict outcomes.
+This diagram shows how I setup logging at work. These logs are crucial for us as many of our services are money related. Additionally, these are processed by Analytics & Monitoring tools to gain insights & predict positive
+outcomes.
+
+Logrotate is of the essential utility I considered in my logging configuration. Its directives do many useful tasks
+and it avoids having to write external scripts.
 
 Directives of logrotate :
 --------------------------
