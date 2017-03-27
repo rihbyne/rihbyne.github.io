@@ -1,7 +1,7 @@
 <style rel="text/css">
- .site-logo{   max-width: 110px;
+ .site-logo{
     float: left;
-}
+  }
 .container .blog-header h1 , .container .blog-header p {
 }
 .container .blog-header h1 {
@@ -15,12 +15,25 @@
 margin-right:25px;
 }
 
+ .blog-header nav a {
+    text-decoration:none;
+     color: blue;
+ }
+
+ .blog-footer .nav a {
+     text-decoration: none;
+     color: blue;
+ }
+
+ .blog-footer .nav .dots {
+     font-weight: bold;
+ }
 </style>
 <header class="blog-header">
   <div class="header-container" style="height: auto">
     <div class="site-logo" >
       {% if SITELOGO %}
-       <img  src="{{ SITEURL }}/{{ SITELOGO }}" height="200px">
+       <img  src="{{ SITEURL }}/{{ SITELOGO }}">
       {% endif %}
     </div>
     <div>
@@ -33,8 +46,11 @@ margin-right:25px;
         {% if not page %}
         <nav>
            <a href="{{ SITEURL }}/{{ INDEX_URL }}">INDEX</a>
+           <span class="header-dots">.</span>
            <a href="{{ SITEURL }}/archives">ARCHIVES</a>
+           <span class="header-dots">.</span>
            <a href="{{ SITEURL }}/categories">CATEGORIES</a>
+           <span class="header-dots">.</span>
            <a href="{{ SITEURL }}/tags">TAGS</a>
        </nav>
        {% endif %}

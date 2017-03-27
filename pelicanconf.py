@@ -8,7 +8,7 @@ AUTHOR = u'Rihan Pereira'
 
 SITEURL = 'http://localhost:8113'
 SITENAME = u"swlogs"
-SITESUBTITLE = u"collection of articles & a project catalog with respect to time"
+SITESUBTITLE = u"recording happenings around"
 SITELOGO = 'images/android-chrome-512x512.png'
 
 THUMBNAIL = 'images/lattern.jpg'
@@ -68,10 +68,10 @@ DISQUS_SITENAME = 'swlogs'
 #GOOGLE_ANALYTICS = 'something'
 
 USE_CUSTOM_MENU = True
-CUSTOM_MENUITEMS = (('blog', INDEX_URL),
+CUSTOM_MENUITEMS = (('Blog', INDEX_URL),
                     ('DIY', 'DIY'),
-                    ('resume', 'downloadables/resume.pdf'),
-                    ('reading', 'https://goodreads.com/rihbyne'),
+                    ('Resume', 'downloadables/resume.pdf'),
+                    ('Reading', 'https://goodreads.com/rihbyne'),
                    )
 
 #social links

@@ -5,3 +5,5 @@ Summary: Started off as one of the module for a project, later got matured into 
 
 Reusable Apps in a traditional 3-tier application architectures have proved to be very useful in 
 delivering out of box functionality.
+
+<img src="../../images/diy/reusable_app.png" width="750" height="550">

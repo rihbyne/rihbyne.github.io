@@ -4,23 +4,31 @@
 
 <style>
 ul.quick-links li a {
-    font-size: 16px;
+    font-size: 70%;
+ }
+
+ul.quick-links li, .dots {
+    line-height: 16px;
+    display: inline;
 }
 
-ul.quick-links li {
-    line-height: 16px;
+ul.quick-links li a {
+    color: blue;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 ul.quick-links {
     padding-left: 0;
     margin-top: 15px;
-    list-style-type: none;
     text-align: left;
 }
+
 .landing-container {
    /* float: left;*/
 width:85%;
 }
+
 .container .blog-footer {
     margin-top: 2em;
     text-align: center;
@@ -31,22 +39,34 @@ width:85%;
  .img-abt {
     margin-top: 15px;
  }
+
 .img-cont{
     width: 35%;
     float: left;
 }
+
 .img-cont img {
     width: 85%;
     height: auto;
     border-radius: 50%;
 }
+
 .landing-container header h1 {
     font-size: 4em;
-    margin: 0.4em 0 0 0;
+    margin: -17% 0 0 0;
+    margin-left: 20%;
 }
+
 header p {
 	margin:0 0 10px 0;
+  margin-left: 20%;
 }
+
+header img {
+    width: 20%;
+    height: auto;
+}
+
 .cont-wrap{
 	width: 60%;/* margin-left: 50%; *//* border: 1px solid #000; */ float: left;
 }
@@ -57,6 +77,7 @@ header p {
  .cont-wrap p {
   font-size: 14px;
  }
+
 @media only screen and (max-width: 640px) {
 	.landing-container , .cont-wrap{
 	    width: 100%;
@@ -72,7 +93,8 @@ header p {
 	}
 	.landing-container header h1 {
 	    font-size: 3em;
-	    margin: 0.2em 0 0 0 ;
+	    margin: -22% 0 0 0 ;
+      margin-left: 22%
 	}
 
   .cont-wrap h1 {
@@ -80,27 +102,43 @@ header p {
       margin: 0.2em 0 0 0 ;
   }
 
-	header p , .cont-wrap p {
+	  header p {
+       margin:0 0 10px 0;
+        margin-left: 20%;
+    }
+
+    .cont-wrap p {
 		margin:0 0 10px 0;
 	}
+
+    .cont-wrap div {
+        margin-left:1%;
+	  }
 
 	.landing-container ul{
 		margin-bottom: 0;
 	}
-	
+
+    ul.quick-links li a {
+       font-size: 70%;
+    }
 }
 </style><div class="container">
         <div class="landing-container">
             <header>
+                <img src="{{ SITEURL }}/images/android-chrome-192x192.png" style="    ;" />
                 <h1 class="landing-header">{{ SITENAME }}</h1>
-                <p>{% if SITESUBTITLE %} {{ SITESUBTITLE }} {% endif %}</p>
+                <p><i>{% if SITESUBTITLE %} {{ SITESUBTITLE }} {% endif %}</i></p>
             </header>
 	          <div class="img-abt">
 		           <div class="img-cont" >
 			         <div class="abt-me">
 				           <img src="{{ SITEURL }}/{{ THUMBNAIL }}" style="    ;" />
 			         </div>
-			         <div>
+			         
+		            </div>
+		            <div class="cont-wrap">
+                  <div>
                    <ul class="quick-links">
                    {% if USE_CUSTOM_MENU %}
                     {% for name, url in CUSTOM_MENUITEMS %}
@@ -108,30 +146,28 @@ header p {
                             <li><a href="{{ url }}" target="_blank">{{ name }}</a></li>
                         {% else %}
                             <li><a href="{{ SITEURL }}/{{ url }}">{{ name }}</a></li>
+                            <li class="dots">.</li>
                         {% endif %}
-                    {% endfor %}
-                   {% else %}
+                     {% endfor %}
+                    {% else %}
                     {% for page in PAGES %}
                         <li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
                     {% endfor %}
-                   {% endif %}
-                   {% for title,url in CONTACTS %}
+                    {% endif %}
+                    {% for title,url in CONTACTS %}
                     <li><a href="{{ url }}">{{ title|capitalize }}</h3>
                     </a></li>
-                   {% endfor %}
-                   {% include 'email.html' %}
+                    {% endfor %}
+                    {% include 'email.html' %}
                    </ul>
-			          </div>
-		            </div>
-		            <div class="cont-wrap">
+			            </div>
 			          <h1>About Me!</h1>
                 <p>
-                    Hello, I am Rihan(<em>Rihen</em>) Pereira. I am the creator & maintainer of this
-                    site. I write about my accidental discoveries,  how I solved that
-                    software engineering problem, maybe a post on a treasure, and things I do outside
-                    of my profession. Now, you may ask - "Why swlogs.me? and not use third-party
-                    blogging instead" - Customization, longetivity. I believe this is a one-time setup and
-                    site auto-generates through markdown processor engine.
+                    I am Rihan(<em>Rihen</em>) Pereira. I to write about my accidental discoveries, maybe
+                    how I solved that
+                    software engineering problem or things I do outside of my profession. In case if
+                    you are wondering - "Why swlogs.me? and not use third-party
+                    tool" - You never know when they will shut down and then you have to migrate.
                 </p>
 		            </div>
 	         </div> </div>

@@ -7,6 +7,7 @@
                     <li><a href="{{ url }}" target="_blank">{{ name }}</a></li>
                 {% else %}
                     <li><a href="{{ SITEURL }}/{{ url }}">{{ name }}</a></li>
+                    <li class="dots">.</li>
                 {% endif %}
             {% endfor %}
         {% else %}
