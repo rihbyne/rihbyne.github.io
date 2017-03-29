@@ -1,4 +1,4 @@
-Title: Automatic Bug Reporter GSOC 2013
+Title: Bug Reporter GSOC 2013
 Date: 2013-05-03 12:50
 Slug: gsoc-2013
 Tags: gsoc, 2013, python, Django, js, css, xhtml, open source, git
