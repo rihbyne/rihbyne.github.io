@@ -1,4 +1,4 @@
-Title: Multi-Tenant architecture for umbrella application
+Title: Multi-Tenant Umbrella architecture
 Date: 2016-11-05 11:07
 Slug: multi-tenancy
 Summary: Used software multi-tenancy to address the problem of data segregation and ACLs to control the scope of resources on users.

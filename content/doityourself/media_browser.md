@@ -1,6 +1,7 @@
-Title: Media Browser - [on going]
+Title: Media Browser 
 Date: 2014-02-06 07:56
 Slug: media-browser
-Summary: A web-based public Images directory
+Summary: A normalized data model
 
-draft the architecture of the application
+![schema]({attach}../images/diy/datamodel.png)
+
