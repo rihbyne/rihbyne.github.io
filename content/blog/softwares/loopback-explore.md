@@ -3,7 +3,7 @@ Date: 2016-10-20 15:37
 Slug: loopback-explore
 Tags: nodejs, enterprise, restapi, javascript, js, open source, framework
 Authors: Rihan Pereira
-Summary: This post gives a walk through on a enterprise acclaimed nodejs framework
+Summary: A walk through on a enterprise acclaimed nodejs framework
 
 The below figure is an illustration of sophisticated NodeJS API Framework called loopback, which is used for
 building serious service APIs. Loopback is supported and crafted by Strongloop, an IBM company. I have
@@ -14,4 +14,4 @@ components which even you can write on your own, which is good - gives you contr
 the abstract one's which come along with it. However, there are some modules which the framework provides out of
 box which abstracts away a lot of biolerplate functionality and therefore they are worth incorporating in your code.
 
-![loopback_illustration]({attach}../../images/loopback_illustration.png)
+<img src="../../images/loopback.png" width="1521" height="948">
