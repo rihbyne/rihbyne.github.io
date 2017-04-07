@@ -18,7 +18,6 @@ Lets use standard industry practices to secure user accounts:
 ```
 :::js
 // Random Value Generator Function
-
  function hashIt(data) {
   var sha = crypto.createHash('sha1')
   sha.update(data + '', 'ascii')
@@ -38,7 +37,7 @@ function createSalt() {
 salt=createSalt() // generate salt
 password=hashIt(salt+password) // mixture of plain text password and given salt
 email=email.toLowerCase()
-accountID=hashIt(email) also hash email for user_id
+accountID=hashIt(email) // also hash email for user_id
 
 // finally save the user object to the DB
 var u = UserModel(object)

@@ -4,3 +4,5 @@ Slug: git-workflow
 Tags: git, version-control, code management, repository 
 Authors: Rihan Pereira
 Summary: Discusses git branching model used to manage codebases
+
+
