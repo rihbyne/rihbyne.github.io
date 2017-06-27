@@ -6,7 +6,7 @@ Authors: Rihan Pereira
 Summary: A review about the gear I bought to play along with my cousins, friends and the community people around
 
 # The RB2 Bass Amp
-This 30 Watts bass guitar Amplifier is very portable, handy to carry along with your instrument. For me it was worth purchasing as I used and still using it for practicing and rehearsing with my fellow band mates before playing live. However, I didnt use it as a monitor at live Gigs because it wasn't required many times as the sound guy already had monitors arranged on stage. This Amp is known for its connection options it provides out-of-box like the Equilizer, DI, and the Auxillary IN socket.
+This 30 Watts bass guitar Amplifier is very portable, handy to carry along with your instrument. For me it was worth purchasing as I use it for practicing and rehearsing with my fellow band mates before playing live. However, I didnt use it as a monitor at live Gigs because it wasn't required many times as the sound guy already had monitors arranged on stage. This Amp is known for its connection options it provides out-of-box like the Equilizer, DI, and the Auxillary IN socket.
 
 <img src="../../images/soundgear/laney_rb2_left.jpg" width="850" height="450">
 

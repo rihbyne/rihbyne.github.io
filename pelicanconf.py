@@ -15,8 +15,6 @@ THUMBNAIL = 'images/lattern.jpg'
 
 TIMEZONE = 'Asia/Kolkata'
 
-SITEFOOTER = u'Rihan &copy; 2017. Contents is <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.'
-
 #SITETITLE = AUTHOR
 #SITEDESCRIPTION = '%s\'s Thoughts and Writings' % AUTHOR
 
@@ -99,6 +97,8 @@ USE_FOLDER_AS_CATEGORY = True
 MAIN_MENU = True
 
 LINKS = (('Portfolio', 'http://localhost:8113'),)
+
+SITEFOOTER = u'Rihan &copy; 2017. Contents is <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.'
 
 MENUITEMS = (('Archives', '/archives.html'),
              ('Categories', '/categories.html'),

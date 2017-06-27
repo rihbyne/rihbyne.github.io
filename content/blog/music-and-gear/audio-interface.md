@@ -5,8 +5,7 @@ Tags: audio processing, soundcard, midi, recording
 Authors: Rihan Pereira
 Summary: The Focusrite 6 I/O channel audio interface that I bought for recording instruments
 
-Audio Interface is a useful device for connecting, consolidating multiple musical instruments and route them
-all to audio recording software, also called as Digital Audio WorkStation(DAW).
+Audio Interface is a useful device for connecting, consolidating multiple musical instruments and routing musical information of each instrument to audio recording software, also called as Digital Audio WorkStation(DAW).
 
 I got this 6 I/O channel 1st generation audio interface for the very same purpose it is used for. If you are
 wondering how this device is giving you 6 I/O then here is how it goes.

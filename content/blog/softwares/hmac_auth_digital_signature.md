@@ -12,7 +12,7 @@ HMAC & why use it:
 Hash of Message Authentication Code(MAC) signs HTTP URL request or even JSON-RPC/XML communication interfaces 
 & guarantees 2 things:
 
-* Authentication - ensures receiving party that the request has come from the one who is in possession with SECREY_KEY
+* Authentication - ensures receiving party that the request has come from the one who is in possession with SECRET_KEY
 * Integrity - Small change in the values of arguments attached to the request produces completely different hash. Hence, maintaining originality.
 
 It is able to produce Digital Signature(DS) by making use of symmetric key
