@@ -14,9 +14,9 @@ Why use it ?
  - The technique is commonly used in finance firms.These are one-time tokens. The one-time token is delivered to the recipient when the recipient request one from the server. The recipient performs math transformation on its end with the data and sends the result and also the data to the server. If it matches then the call is proved to be authentic.
  - Nonce is one of the technique in practice to prevent replay attacks which is like ‘request -> serve request -> forget request’ assuming a suitable time frame.
 
-*Note: Keywo-\* isolated services of application*
+*Note: Magna-\* isolated services of application*
 
-Nonce in Practice between Keywo-NodeJS, Keywo-PHP and Keywo-Notifier:
+Nonce in Practice between Magna-NodeJS, Magna-PHP and Magna-Notifier:
 ---------------------------------------------------------------
 
 Nonce implementations vary based on the architecture of the systems. Here is how I implemented Nonce at

@@ -3,7 +3,7 @@ Date: 2016-11-05 11:07
 Slug: multi-tenancy
 Summary: Used software multi-tenancy to address the problem of data segregation and ACLs to control the scope of resources on users.
 
-![block\_diagram]({attach}../images/diy/itd_org_architecture.png)
+![block\_diagram]({attach}../images/diy/yne_org_architecture.png)
 
 
 

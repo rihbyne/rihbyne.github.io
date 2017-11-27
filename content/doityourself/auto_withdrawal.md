@@ -19,7 +19,7 @@ devices, thereby adding an extra layer of security. All operations happen only a
 
 * __Send-Receive Unit__ - The 'Send' operation works in 2 modes - on-chain & off-chain. This unit is responsible for sending/receiving money within its local/external user base.
 
-* __Purchase Unit__ - Also referred to as Deposit unit. Allows users of the wallet to buy app's assets, virtual currency called as ITD(Internet dollars) against bitcoin, ethereum, litecoin, stripe(USD).
+* __Purchase Unit__ - Also referred to as Deposit unit. Allows users of the wallet to buy app's assets, virtual currency called as YNE(example currency, for name sake) against bitcoin, ethereum, litecoin, stripe(USD).
 
 * __Payout Unit__ - Also known as Withdrawals unit, runs as a background job within the wallet ecosystem. Its job is to move funds from user local account into any other external wallet.
 
@@ -55,7 +55,7 @@ Transactions which circulate within app’s boundaries and persist in app’s ow
 transactions. Off-chain txns do not tax txn fee when moving funds between users as opposed to on-chain one. But there are limits set on how many off-chain txn can be made per day. 
 
 
-Q - How to move user’s ITD account’s off-chain balance into on-chain swiftly ? (Note - Just my opinion)
+Q - How to move user’s YNE account’s off-chain balance into on-chain swiftly ? (Note - Just my opinion)
 --------------------------------------------------------------------------
 
 * First of all, user files a request saying that ‘transfer x amount from off-chain’s ABC pocket  to on-chain’s XYZ pocket’
