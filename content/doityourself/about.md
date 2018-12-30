@@ -1,4 +1,4 @@
 Title: test
 Template: doityourself
-url: DIY
-save_as: DIY/index.html
+url: diy
+save_as: diy/index.html

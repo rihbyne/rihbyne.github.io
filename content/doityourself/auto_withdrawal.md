@@ -63,6 +63,6 @@ Q - How to move user’s YNE account’s off-chain balance into on-chain swiftly
 * The transfer request registered can be automatic, semi-automatic, entirely manual and gets approved from concerned admin.
 * If approved, nullify the freezed amount, add x amount into his/her on-chain balance(do this by creating default wallet in
 on-chain just like bitgo) and make a transaction entry sideby. 
-* For on-chain, multi-currency outlets can be installed as adapters. Just like, as of now, we are/will be working  bitcoin-core,
+* For on-chain, multi-currency outlets can be installed as adapters. Just like, as of now, we are/will be working  on bitcoin-core,
 bitcoin-cash, ripple, moneray, etc.
 * On-chain will/can have duplex gateways for moving in/out the funds

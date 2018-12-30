@@ -6,7 +6,7 @@ LOAD_CONTENT_CACHE = False
 
 AUTHOR = u'Rihan Pereira'
 
-SITEURL = 'http://localhost:8113'
+SITEURL = 'http://127.0.0.1:8000'
 SITENAME = u"swlogs"
 SITESUBTITLE = u"recording happenings around"
 SITELOGO = 'images/android-chrome-512x512.png'
@@ -19,7 +19,7 @@ TIMEZONE = 'Asia/Kolkata'
 #SITEDESCRIPTION = '%s\'s Thoughts and Writings' % AUTHOR
 
 USE_FOLDER_AS_CATEGORY = True
-DEFAULT_CATEGORY = 'software'
+DEFAULT_CATEGORY = 'softwares'
 DEFAULT_DATE_FORMAT = '%a %d %B %Y'
 DEFAULT_DATE = 'fs'
 
@@ -46,7 +46,7 @@ ARTICLE_URL = INDEX_URL+'/{slug}'
 ARTICLE_SAVE_AS = ARTICLE_URL+'/index.html'
 
 page_dir = 'doityourself'
-PAGE_URL = 'DIY'+'/{slug}'
+PAGE_URL = 'diy'+'/{slug}'
 PAGE_SAVE_AS = PAGE_URL+'/index.html'
 
 DRAFT_URL = 'drafts/{slug}'
@@ -60,14 +60,14 @@ TAG_SAVE_AS = 'tag/{slug}.html'
 
 DEFAULT_PAGINATION = 5
 
-COPYRIGHT_YEAR = 2016
+COPYRIGHT_YEAR = 2018
 
 DISQUS_SITENAME = 'swlogs'
 #GOOGLE_ANALYTICS = 'something'
 
 USE_CUSTOM_MENU = True
 CUSTOM_MENUITEMS = (('Blog', INDEX_URL),
-                    ('DIY', 'DIY'),
+                    ('diy', 'diy'),
                     ('Resume', 'downloadables/resume.pdf'),
                     ('Reading', 'https://goodreads.com/rihbyne'),
                    )
@@ -96,9 +96,9 @@ AUTHOR_FEED_RSS = None
 USE_FOLDER_AS_CATEGORY = True
 MAIN_MENU = True
 
-LINKS = (('Portfolio', 'http://localhost:8113'),)
+LINKS = (('Portfolio', 'http://localhost:8000'),)
 
-SITEFOOTER = u'Rihan &copy; 2017. Contents are <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.'
+SITEFOOTER = u'Rihan &copy; 2018. Contents are <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.'
 
 MENUITEMS = (('Archives', '/archives.html'),
              ('Categories', '/categories.html'),
@@ -114,9 +114,20 @@ CC_LICENSE = {
 #RELATIVE_URLS = True
 
 #plugins control
-PLUGIN_PATHS = ['../pelican-extras/pelican-plugins']
+PLUGIN_PATHS = ['/home/rihan/pelican-plugins']
 PLUGINS = ['sitemap', 'post_stats', 'extract_toc', 'render_math']
-MD_EXTENSIONS = ['codehilite', 'extra', 'smarty', 'toc']
+
+# MD_EXTENSIONS = ['codehilite', 'extra', 'smarty', 'toc']
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        'markdown.extensions.smarty': {},
+        'markdown.extensions.toc':{},
+    },
+    'output_format': 'html5',
+}
 
 SITEMAP = {
     'format': 'xml',
