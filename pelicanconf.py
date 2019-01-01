@@ -114,8 +114,8 @@ CC_LICENSE = {
 #RELATIVE_URLS = True
 
 #plugins control
-#PLUGIN_PATHS = ['/home/rihan/pelican-plugins']
-PLUGINS = ['pelican.sitemap', 'pelican.post_stats', 'pelican.extract_toc', 'pelican.render_math']
+PLUGIN_PATHS = ['plugins']
+PLUGINS = ['sitemap', 'post_stats', 'extract_toc', 'render_math']
 
 # MD_EXTENSIONS = ['codehilite', 'extra', 'smarty', 'toc']
 MARKDOWN = {
