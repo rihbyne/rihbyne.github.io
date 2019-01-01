@@ -4,7 +4,6 @@ python:
 branches:
   only:
     - develop
-    - master
 install:
   - pip install -r requirements.txt
   - pip install ghp-import
@@ -19,4 +18,4 @@ deploy:
   github_token: $GITHUB_TOKEN
   local_dir: output
   on:
-    branch: master
+    branch: develop
