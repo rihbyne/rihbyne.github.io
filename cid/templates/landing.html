@@ -72,7 +72,7 @@ header img {
 }
 
 .cont-wrap{
-	width: 60%;/* margin-left: 50%; *//* border: 1px solid #000; */ float: left;
+	width: 65%;/* margin-left: 50%; *//* border: 1px solid #000; */ float: left;
 }
 .cont-wrap h1 {
 	margin:0 0 10px 0;
@@ -81,6 +81,7 @@ header img {
  .cont-wrap p {
   font-size: 14px;
  }
+
 
 @media only screen and (max-width: 640px) {
 	.landing-container , .cont-wrap{
@@ -138,6 +139,7 @@ header img {
 		           <div class="img-cont" >
 			         <div class="abt-me">
 				           <img src="{{ SITEURL }}/{{ THUMBNAIL }}" style="    ;" />
+                   <br/>
 			         </div>
 		            </div>
 		            <div class="cont-wrap">
@@ -164,10 +166,11 @@ header img {
                     {% include 'email.html' %}
                    </ul>
 			            </div>
-			          <h1>About Me!</h1>
+			          <h3>Rihan Pereira (Author)</h3>
                 <p>
+                    I am the maintainer of <strong>swlogs.me</strong>. 
                     Hi, I am Rihan(<em>Rihen</em>) Pereira - the picture on the left.
-                    I maintain <b>swlogs.me</b>. Most of my blog posts & project articles fall into
+                    I maintain <strong>swlogs.me</strong>. Most of my blog posts & project articles fall into
                     computer space. Some of the topics I have begun to explore & study include
                     doing web development at scale, Release Engineering on small/large scale,
                     Distributed Systems with applications, Systems Security, the Blockchain,

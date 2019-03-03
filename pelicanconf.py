@@ -19,7 +19,7 @@ TIMEZONE = 'Asia/Kolkata'
 #SITEDESCRIPTION = '%s\'s Thoughts and Writings' % AUTHOR
 
 USE_FOLDER_AS_CATEGORY = True
-DEFAULT_CATEGORY = 'softwares'
+DEFAULT_CATEGORY = 'softwaredesign'
 DEFAULT_DATE_FORMAT = '%a %d %B %Y'
 DEFAULT_DATE = 'fs'
 
@@ -60,16 +60,16 @@ TAG_SAVE_AS = 'tag/{slug}.html'
 
 DEFAULT_PAGINATION = 5
 
-COPYRIGHT_YEAR = 2018
+COPYRIGHT_YEAR = 2019
 
 DISQUS_SITENAME = 'swlogs'
 #GOOGLE_ANALYTICS = 'something'
 
 USE_CUSTOM_MENU = True
-CUSTOM_MENUITEMS = (('Blog', INDEX_URL),
-                    ('diy', 'diy'),
-                    ('Resume', 'downloadables/resume.pdf'),
-                    ('Reading', 'https://goodreads.com/rihbyne'),
+CUSTOM_MENUITEMS = (('posts', INDEX_URL),
+                    ('solos', 'diy'),
+                    ('resume', 'downloadables/resume.pdf'),
+                    ('reading', 'https://goodreads.com/rihbyne'),
                    )
 
 #social links
@@ -98,7 +98,7 @@ MAIN_MENU = True
 
 LINKS = (('Portfolio', 'http://localhost:8000'),)
 
-SITEFOOTER = u'Rihan &copy; 2018. Contents are <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.'
+SITEFOOTER = u'Rihan &copy; 2019. Contents are <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.'
 
 MENUITEMS = (('Archives', '/archives.html'),
              ('Categories', '/categories.html'),
