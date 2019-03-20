@@ -5,7 +5,14 @@ Summary: Main focus was to put together a system design to interface a visual GU
 
 Elementary handwritten digit and alphabet classifier using supervised learning as part of the class COMP 549 - Human Computer Interaction. The main objective was to put into practice design principles taught in the class and system design.
 
-![block\_diagram]({attach}../images/diy/handwritten.gif)
+<!--![block\_diagram]({attach}../images/diy/handwritten.gif) -->
+<img src="../images/diy/handwritten.gif"
+     srcset="../images/diy/handwritten.gif 240w,
+     ../images/diy/handwritten.gif 480w,
+     ../images/diy/handwritten.gif 960w"
+     sizes="(max-width: 480px) 50vw,
+     (max-width: 960px) 50vw,
+     480px">
 
 ## The GUI walkthorough
 The app is structured into 4 panes. The left side has 3 panes and right side 3 panes.
