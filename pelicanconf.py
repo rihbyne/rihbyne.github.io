@@ -69,8 +69,10 @@ USE_CUSTOM_MENU = True
 CUSTOM_MENUITEMS = (('posts', INDEX_URL),
                     ('solos', 'diy'),
                     ('resume', 'downloadables/resume.pdf'),
-                    ('reading', 'https://goodreads.com/rihbyne'),
+                    ('reading', 'https://goodreads.com/rihanpereira'),
                    )
+
+LINKS = (('reading', 'https://goodreads.com/rihbyne'),)
 
 #social links
 SOCIAL = (('Github', 'https://github.com/rihbyne'),
