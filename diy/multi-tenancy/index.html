@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>swlogs - Multi-Tenant Umbrella architecture</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://rihbyne.github.io/theme/css/cid.css">
+        <link href="https://rihbyne.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="swlogs Atom Feed" />
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+            <div class="container">
+
+<style rel="text/css">
+ body p {
+    text-align: justify
+ }
+
+ .site-logo {
+    float: left;
+  }
+.container .blog-header h1 , .container .blog-header p {
+}
+.container .blog-header h1 {
+
+    display: inline-block;
+}
+.site-logo img {
+    width: 100%;
+    max-width: 110px;
+    height: auto;
+margin-right:25px;
+}
+
+ .blog-header nav a {
+    text-decoration:none;
+     color: blue;
+ }
+
+ .blog-footer .nav a {
+     text-decoration: none;
+     color: blue;
+ }
+
+ .blog-footer .nav .dots {
+     font-weight: bold;
+ }
+</style>
+<header class="blog-header">
+  <div class="header-container" style="height: auto">
+    <div class="site-logo" >
+       <img  src="https://rihbyne.github.io/images/android-chrome-512x512.png">
+    </div>
+    <div>
+      <h1>
+       <a href="https://rihbyne.github.io">swlogs</a>
+      </h1>
+      <p> recording happenings around </p>
+    </div>
+  </div>
+</header>
+    <h1>Multi-Tenant Umbrella architecture</h1>
+    
+
+    <p><img alt="block_diagram" src="https://rihbyne.github.io/diy/multi-tenancy/yne_org_architecture.png"></p>
+<p><em>Software multitenancy</em>  enabled me to achieve a granular control over each tenant’s resources like data for example. At the MongoDB level - every new tenant shares a common application server but has dedicated database and dedicated connection instance. </p>
+<p>PS:  In application context, tenant = merchant</p>
+<h2 id="next-immediate-question-is-how-is-the-design-useful-and-is-it-feasible">Next immediate question is - how is the design useful and is it feasible?</h2>
+<p>Having db/merchant will have many advantages.</p>
+<ul>
+<li><strong>Separation of concerns</strong> - The most sort after requirement in this type of software designs.It allows us to give specific privileges to each merchant and its users.Each merchant’s data doesn’t get mix up with others. Security wise like Nonce and Digital Signature can be controlled as per the specification.</li>
+<li><strong>Self-Contained Mongoose instance</strong> - by default mongoose provisions 5 pool connections to each database for parallel simultaneous I/O so maintaining dedicated mongoose instances inside the node app will avoid long running callbacks.</li>
+<li><strong>Flexibility in defining API endpoints</strong> - dedicated mongoose connection to the database will be configured at the base route level for each merchant.</li>
+<li><strong>Scalability</strong> - Based on application monitoring and analytics if we find out that one merchant’s traffic is significantly higher than other then we can shard the mongodb itself at its database level and run individual mongod daemon for each sharded server. In contrast, we will not get this performance benefit if we persist merchant’s data collection-wise in single giant database and shard collections inside them. It will be cumbersome.</li>
+</ul>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+                    <li><a href="https://rihbyne.github.io/blog">posts</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/diy">solos</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/downloadables/resume.pdf">resume</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/https://goodreads.com/rihanpereira">reading</a></li>
+                    <li class="dots">.</li>
+    </ul>
+
+    <p class="disclaimer">
+        Rihan &copy; 2019. Contents are <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.
+    </p>
+</footer>
+            </div>
+    </body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>    Securing APIs with HMAC Authentication and Digital Signature
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://rihbyne.github.io/theme/css/cid.css">
+        <link href="https://rihbyne.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="swlogs Atom Feed" />
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+            <div class="container">
+
+<style rel="text/css">
+ body p {
+    text-align: justify
+ }
+
+ .site-logo {
+    float: left;
+  }
+.container .blog-header h1 , .container .blog-header p {
+}
+.container .blog-header h1 {
+
+    display: inline-block;
+}
+.site-logo img {
+    width: 100%;
+    max-width: 110px;
+    height: auto;
+margin-right:25px;
+}
+
+ .blog-header nav a {
+    text-decoration:none;
+     color: blue;
+ }
+
+ .blog-footer .nav a {
+     text-decoration: none;
+     color: blue;
+ }
+
+ .blog-footer .nav .dots {
+     font-weight: bold;
+ }
+</style>
+<header class="blog-header">
+  <div class="header-container" style="height: auto">
+    <div class="site-logo" >
+       <img  src="https://rihbyne.github.io/images/android-chrome-512x512.png">
+    </div>
+    <div>
+      <h1>
+       <a href="https://rihbyne.github.io">swlogs</a>
+      </h1>
+      <p> recording happenings around </p>
+    </div>
+  </div>
+        <nav>
+           <a href="https://rihbyne.github.io/blog">INDEX</a>
+           <span class="header-dots">.</span>
+           <a href="https://rihbyne.github.io/archives">ARCHIVES</a>
+           <span class="header-dots">.</span>
+           <a href="https://rihbyne.github.io/categories">CATEGORIES</a>
+           <span class="header-dots">.</span>
+           <a href="https://rihbyne.github.io/tags">TAGS</a>
+       </nav>
+</header>
+
+    <div class="post">
+        <header>
+            <h1>Securing APIs with HMAC Authentication and Digital Signature</h1>
+            <p class="date">
+              Posted on Apr 10 2016 09:00 in
+              <a href="https://rihbyne.github.io/category/security">
+                security
+              </a>
+
+              &#8226; 2 min read
+            </p>
+        </header>
+
+        <article>
+          <div>
+            <p>In this blog post I discuss what HMAC is. Why would anyone wants to use it in practice and how to go about implementing it.</p>
+<h2 id="hmac-why-use-it">HMAC &amp; why use it:</h2>
+<p>Hash of Message Authentication Code(MAC) signs HTTP URL request or even JSON-RPC/XML communication interfaces 
+&amp; guarantees 2 things:</p>
+<ul>
+<li>Authentication - ensures receiving party that the request has come from the one who is in possession with SECRET_KEY</li>
+<li>Integrity - Small change in the values of arguments attached to the request produces completely different hash. Hence, maintaining originality.</li>
+</ul>
+<p>It is able to produce Digital Signature(DS) by making use of symmetric key
+crytography. This symmetric key cryptography makes use of shared secret key which the trusted two parties must 
+possess before computing HMAC. However, this implementation comes at a price; employing this type of security 
+requires secret key provider to secure its key data. </p>
+<p>Securing parameter around where your shared secret keys by considering this features -</p>
+<ul>
+<li>Good to store secret keys in distributed systems environment. Geo-replication state assures no single point of
+  failure. Your application continues to map access key id to its secret key even in crash, attacked
+  circumstances.</li>
+<li>DOS, DDOS attack proof</li>
+<li>Whitelisting only certain IPs to access key data server</li>
+</ul>
+<h2 id="implementation">Implementation:</h2>
+<p>HMAC needs following functions to setup:</p>
+<ul>
+<li><strong>key pair generator</strong> - returns publishable/secret key pair for new device</li>
+<li><strong>message encryptor</strong> - returns signature produced for given text &amp; key</li>
+<li><strong>signature validator</strong> - returns boolean; determines whether signature is valid/invalid for given text &amp; key. Makes
+use of &lsquo;<strong>message encryptor</strong>&lsquo; function internally</li>
+</ul>
+<h2 id="key-pair-generator">key pair generator</h2>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">algorithm</span> <span class="o">=</span> <span class="s2">&quot;sha512&quot;</span>
+
+<span class="c1">//text -&gt; mix in form details of company/individual/organization you are generating keys for</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">createKeyPair</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">keyobj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">pubk</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+    <span class="nx">secretk</span><span class="o">:</span><span class="kc">null</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">pubk</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">createHash</span><span class="p">(</span><span class="s1">&#39;sha512&#39;</span><span class="p">)</span>
+  <span class="kd">var</span> <span class="nx">secretk</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">createHash</span><span class="p">(</span><span class="s1">&#39;sha512&#39;</span><span class="p">)</span>
+
+  <span class="nx">pubk</span><span class="p">.</span><span class="nx">update</span><span class="p">((</span><span class="nx">text</span> <span class="o">+</span> <span class="nx">createSalt</span><span class="p">()))</span> <span class="c1">// randomizer - can be customized, requires to be confidential</span>
+  <span class="nx">secretk</span><span class="p">.</span><span class="nx">update</span><span class="p">((</span><span class="nx">text</span> <span class="o">+</span> <span class="nx">createSalt</span><span class="p">()))</span>
+
+  <span class="nx">keyobj</span><span class="p">.</span><span class="nx">pubk</span> <span class="o">=</span> <span class="nx">pubk</span><span class="p">.</span><span class="nx">digest</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">)</span> <span class="c1">// publishable key a.k.a access key id</span>
+  <span class="nx">keyobj</span><span class="p">.</span><span class="nx">secretk</span> <span class="o">=</span> <span class="nx">secretk</span><span class="p">.</span><span class="nx">digest</span><span class="p">(</span><span class="s1">&#39;base64&#39;</span><span class="p">)</span> <span class="c1">// secret key. should be stored safe.</span>
+
+  <span class="k">return</span> <span class="nx">keyobj</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="messsage-encryptor">messsage encryptor</h2>
+<div class="highlight"><pre><span></span><span class="c1">// k -&gt; secret keyobj</span>
+<span class="c1">// text -&gt; arguments encoding with &amp;,= order necessary, small change in text outputs completely different signature</span>
+<span class="c1">// cb -&gt; callback</span>
+
+<span class="kd">function</span> <span class="nx">encryptMessage</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">hash</span>
+  <span class="kd">var</span> <span class="nx">hmac</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">createHmac</span><span class="p">(</span><span class="nx">algorithm</span><span class="p">,</span> <span class="nx">k</span><span class="p">)</span>
+
+  <span class="nx">hmac</span><span class="p">.</span><span class="nx">setEncoding</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">)</span>
+
+  <span class="c1">// callback is attached as listener to stream&#39;s finish event:</span>
+  <span class="nx">hmac</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">hash</span> <span class="o">=</span> <span class="nx">hmac</span><span class="p">.</span><span class="nx">read</span><span class="p">()</span>
+    <span class="nx">cb</span><span class="p">(</span><span class="nx">hash</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="signature-validator">signature validator</h2>
+<div class="highlight"><pre><span></span><span class="c1">// text -&gt; arguments encoded with &amp;, = order should be same as the one used to sign the request</span>
+<span class="c1">// signature -&gt; hex encoded value</span>
+<span class="c1">// secretk -&gt; shared secret key used between two trusted parties.</span>
+
+<span class="kd">function</span> <span class="nx">validateSignature</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">signature</span><span class="p">,</span> <span class="nx">secretk</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">encryptMessage</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">secretk</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">hash</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">signature</span> <span class="o">===</span> <span class="nx">hash</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">//log.info(&#39;Signature is Valid&#39;)</span>
+      <span class="nx">cb</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">signature</span> <span class="o">+</span> <span class="s1">&#39; !== \n&#39;</span> <span class="o">+</span> <span class="nx">hash</span><span class="p">)</span>
+      <span class="nx">cb</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</pre></div>
+          </div>
+          <div>
+            <p>
+              Tags -
+                    <a href="https://rihbyne.github.io/tag/crytography">crytography</a>
+                    <a href="https://rihbyne.github.io/tag/symmetric-key-encryption">symmetric key encryption</a>
+                    <a href="https://rihbyne.github.io/tag/digital-signature">digital signature</a>
+                    <a href="https://rihbyne.github.io/tag/verification">verification</a>
+            </p>
+          </div>
+        </article>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'swlogs';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            dsq.setAttribute('data-timestamp', +new Date());
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+    </div>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+                    <li><a href="https://rihbyne.github.io/blog">posts</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/diy">solos</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/downloadables/resume.pdf">resume</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/https://goodreads.com/rihanpereira">reading</a></li>
+                    <li class="dots">.</li>
+    </ul>
+
+    <p class="disclaimer">
+        Rihan &copy; 2019. Contents are <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.
+    </p>
+</footer>
+            </div>
+    </body>
+</html>

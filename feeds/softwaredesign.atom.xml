@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>swlogs - softwaredesign</title><link href="https://rihbyne.github.io/" rel="alternate"></link><link href="https://rihbyne.github.io/feeds/softwaredesign.atom.xml" rel="self"></link><id>https://rihbyne.github.io/</id><updated>2018-10-09T21:30:00+05:30</updated><subtitle>recording happenings around</subtitle><entry><title>Scalable Web Architectures</title><link href="https://rihbyne.github.io/blog/scalablearchitectures" rel="alternate"></link><published>2018-10-09T21:30:00+05:30</published><updated>2018-10-09T21:30:00+05:30</updated><author><name>Rihan Pereira</name></author><id>tag:rihbyne.github.io,2018-10-09:/blog/scalablearchitectures</id><summary type="html">&lt;p&gt;my 40 minute information session in a graduate seminar class discussing essential general concepts that go in designing high-traffic web applications&lt;/p&gt;</summary><content type="html">&lt;p&gt;As a graduate student at &lt;a href="https://www.csuci.edu/"&gt;California State University, Channel Islands&lt;/a&gt;, we are required to prepare and talk on a suitable topic of interest for an inclass seminar. After going through a lot of options, I made my mind to study and speak on basic tools and concepts applied to build distributed systems for the web. As we all know distributed systems is hard and complex topic, there isn&amp;rsquo;t much literature on how does one logically segment a web service infrastructure onto more than one machine for various reasons. From what I have read, one shouldn&amp;rsquo;t start thinking about this problem if your analysis from system metrics shows no evidence. But if you were to do so, what component of your N tier application would you scale ? after all, not all components require attention and also factor in cost efficiency.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the link &lt;a href="../../downloadables/swa.pdf"&gt;scalable web architectures&lt;/a&gt;&lt;/p&gt;</content><category term="distributed systems"></category><category term="scalability"></category><category term="software architecture"></category><category term="gradschool"></category><category term="latex"></category></entry><entry><title>Moneypot Project - the betting app</title><link href="https://rihbyne.github.io/blog/the-moneypot-project" rel="alternate"></link><published>2016-03-14T22:01:00+05:30</published><updated>2016-03-14T22:01:00+05:30</updated><author><name>Rihan Pereira</name></author><id>tag:rihbyne.github.io,2016-03-14:/blog/the-moneypot-project</id><summary type="html">&lt;p&gt;A case study on the moneypot project - its design, architecture&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://moneypot.com/"&gt;Moneypot&lt;/a&gt; is a bitcoin wallet but not a full fledge hot wallet out there like blockchain’s
+“my wallet” or coinbase’s wallet. Money wallet handles bitcoin money for its users. Usually, all the transactions
+take place in &lt;strong&gt;bits(1BTC = 106)&lt;/strong&gt; or &lt;strong&gt;satoshi(1BTC = 108)&lt;/strong&gt;. Besides this, Moneypot  serves as a platform for
+application developers who make gambling games to handle the mathematics behinding casino logic, the betting criteria,
+user authentication,etc. Before any app can use Moneypot services, that particular app is approved and
+authorized  by Moneypot and then the services are made available.Since, Moneypot act as a bitcoin fund
+manager.It can be used to receive bitcoins from cold storage using cold addresses or from existing hot
+wallet using hot bitcoin addresses.It can also be used to send bitcoins to others using receiver&amp;rsquo;s bitcoin
+address. The Apps which use moneypot&amp;rsquo;s API allows its users to get btc&amp;rsquo;s in bits from its moneypot wallet as
+well as withdraw deposited funds back into the wallet once done with game playing or betting.This allows
+users who play betting games to transfer losable money from moneypot wallet to apps and vice versa.So the
+moneypot wallet serves as a sandbox for money transfer between games that use its API.&lt;/p&gt;
+&lt;h2 id="components-of-moneypot"&gt;Components of Moneypot :&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="overview_moneypot" src="https://rihbyne.github.io/blog/the-moneypot-project/image04.png"&gt;&lt;/p&gt;
+&lt;p&gt;A bitcoin wallet implementation requires the use of bitcoin-core. The bitcoin-core, also called as a
+full-node is a program that is used to validate transactions and blocks.Since bitcoin doesn’t have a
+centralized governing body, anyone who runs a bitcoin-core helps the peer-to-peer network. So if you are
+running a full-node you become the volunteer.Your full-node accepts transactions and blocks from other full
+nodes, validating those and relaying them to next full nodes.In moneypot’s case, running bitcoin-core is
+required because it gives them full control over their node and take special safety precautions. To interact
+with bitcoin-core, bitcoind is required. bitcoind is a daemon which runs in the background and talks with
+bitcoin-core. The talking takes place in JSON-RPC.There is a seperate CLI utility which is also a RPC client
+which connects to bitcoind.So bitcoind serves as a RPC server.In order to programmatically talk with bitcoind
+there are languages bindings available. For javascript, this project makes use of bitcoinjs and bitcoinjs-lib.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;node-pg&lt;/strong&gt; is node-postgres db driver used in Moneypot to fire queries to postgresql DB.&lt;/p&gt;
+&lt;p&gt;The diagram clearly illustrates the five core components of Moneypot:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;strong&gt;moneypot-api&lt;/strong&gt; implements Oauth framework version 2.0. It acts as a Oauth provider for apps like
+exampleapp.com as shown in the figure. Any external app which uses moneypot-api gets user authentication
+handling, and other resources served via http.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;strong&gt;moneypot-web&lt;/strong&gt; is web application which allows users to sign into the wallet and manage funds like receive
+and move around its approved apps for betting.Along with this, it gives you meta-data about your money in
+wallet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;strong&gt;moneypot-depositor&lt;/strong&gt; talks with bitcoind which in turn talks to full node connected to blockchain
+network.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;strong&gt;socketpot&lt;/strong&gt; is moneypot’s websocket server and its main purpose is to stream notification and alerts over
+the network in real time to the apps which connect to it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="apps-on-moneypot"&gt;Apps on Moneypot:&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="apps_moneypot" src="https://rihbyne.github.io/blog/the-moneypot-project/image10.png"&gt;&lt;/p&gt;
+&lt;p&gt;From the above figure,  an exampleBet.com built by its developers uses Moneypot’s API for its services.
+exampleBet.com is deployed seperately on different machine but uses moneypot’s services served at
+api.moneypot.com. Before any app can use moneypot-api, they need to register the app on moneypot-web.On
+registering the app, moneypot-web will generate &amp;lsquo;app_id&amp;rsquo; followed by other params like &amp;lsquo;app_secret&amp;rsquo; which are
+required if using confidential flow or access_token is required if using implicit flow. So, the moneypot api
+handles the third-party authentication. Now, the application developer can make request on moneypot api from
+the browser app or from the server app.Just remember that, every time you make a request to api server you
+have to include app_id and (access_token or app_secret) depending on the flow type, not doing so, will get
+403 status code. All the endpoints are  located at api-docs.&lt;/p&gt;
+&lt;h2 id="users-on-moneypot"&gt;Users on Moneypot:&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="api_web" src="https://rihbyne.github.io/blog/the-moneypot-project/image08.png"&gt;&lt;/p&gt;
+&lt;p&gt;The diagram illustrates how user uses moneypot-api and moneypot-web.The moneypot-web offers administrative
+dashboard UI for its users.User plays any of the approved games(Apps) listed on moneypot.com.Assuming User
+is not logged into any app. Before using any app, the user should login into the app he/she wishes to play.
+Mosts apps will include the login UI, but, in the background it will call moneypot.com/oauth/authorize?&lt;PARAMS&gt;
+to login the user on moneypot’s server instead of their own app server.The javascript app behind the scene will
+parse out  the access_token and auth_id which will have a two-weeks expiration timeout. Once logged inside,
+user may deposit bits he wishes to gamble from moneypot dashboard to that app and vice versa.Every bet the user
+makes,whether its a win or loss, the app developer gets the steady commission, the moneypot gets some percentage
+of steady commission. If user losses the bet, the wagered amount is lost and taken by the bankroll. If the user
+wins the user wins the betted amount along with the winning odds.&lt;/p&gt;
+&lt;h2 id="application-architecture"&gt;Application Architecture:&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="app_stacks" src="https://rihbyne.github.io/blog/the-moneypot-project/image05.png"&gt;&lt;/p&gt;
+&lt;p&gt;The above three figures provides a top-to-bottom view of how the services in moneypot are layered.One thing you
+will notice missing is the socketpot code layout. Thats because I dont have access to socketpot yet.All the three
+figures have the “libs” block which is the library block.It contains common javasript modules which are accessed
+and used more than once across most of the application.&lt;/p&gt;
+&lt;h2 id="moneypot-api-app-stack"&gt;Moneypot-api App Stack:&lt;/h2&gt;
+&lt;p&gt;moneypot-api running on NodeJS instance version 5.x. Its ES-6 compatible.Meaning that it supports new js features
+like promises, generators,iterators,sync, etc.The koa-middleware block, koa is a web-framework used for building
+web apps and API’s.you get koa-core and depending on your need can install middlewares for your application. The
+koa compatible middlewares are named like koa-*(eg-&amp;gt; koa-bodyparser, koa-acl, koa-json-parser,etc). It plays well
+and inherently supports ES6 features.&lt;/p&gt;
+&lt;p&gt;The api at request/response level is a object contains an array which hold generator functions which executed in
+“U” shaped stack like manner as per the request.The array holds middlewares in use. Koa uses “yield” and “next”
+to pass control between the series of functions(middlewares).When any middleware down the “U” shape invokes “yield
+next” down the stream, the function suspends its execution and passes the control to the next function. Until
+there are no more middlwares down the stream to execute, the request follows back to the initial middleware and
+resumes to execute the remaining code from where it got suspending by “yield next”.This way, Moneypot-api uses
+many koa-* middlewares in its codebase.Its simple and pluggable.&lt;/p&gt;
+&lt;p&gt;A short code excerpt from moneypot-api just shows that.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;app&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;use&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;bodyparser&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+  &lt;span class="c1"&gt;// Treat &amp;#39;Content-Type: text/plain&amp;#39; body as JSON&lt;/span&gt;
+  &lt;span class="nx"&gt;extendTypes&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nx"&gt;json&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;text/plain&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}));&lt;/span&gt;
+
+&lt;span class="c1"&gt;// x-response-time&lt;/span&gt;
+&lt;span class="nx"&gt;app&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;use&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;next&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+ &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nb"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+ &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="nx"&gt;next&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+ &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;ms&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nb"&gt;Date&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nx"&gt;start&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+ &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;X-Response-Time&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;ms&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ms&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+
+&lt;span class="c1"&gt;// logger&lt;/span&gt;
+&lt;span class="nx"&gt;app&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;use&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;next&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+ &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nb"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+ &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="nx"&gt;next&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+ &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;ms&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nb"&gt;Date&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nx"&gt;start&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+ &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%s %s - %s&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;method&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;ms&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="nodejs"></category><category term="postgresql"></category><category term="generators"></category><category term="btc"></category><category term="satoshi"></category><category term="kelly criteron"></category></entry><entry><title>Bug Reporter GSOC 2013</title><link href="https://rihbyne.github.io/blog/gsoc-2013" rel="alternate"></link><published>2013-05-03T12:50:00+05:30</published><updated>2013-05-03T12:50:00+05:30</updated><author><name>Rihan Pereira</name></author><id>tag:rihbyne.github.io,2013-05-03:/blog/gsoc-2013</id><summary type="html">&lt;p&gt;A gsoc 2013 project proposal migrated from wordpress to pelican&lt;/p&gt;</summary><content type="html">&lt;p&gt;This summer I plan to implement a popular technique of collecting
+crash/bug reports via HTTP and automatically parse it into
+sections, insert the fields in our bug tracking database, allowing
+TimVideo developers to find and fix bugs that only happened in the
+field. These are usually the kinds of bugs we can never catch in the
+development mode, since the developers couldn’t possibly reproduce
+every bizarre PC configuration remote users might have.
+This bug detection and reporting has become common technique to take
+care of reporting its own crashes.It is important to find out about
+every crash, anywhere in the world to deliver a high quality working
+program that will be used concurrently.
+Sometimes it is not a great idea to rely on users to tell you about
+tiny details of bug because its possible that many of them are not
+technical enough, and most of them won’t bother to take time off of
+their own important work to give you a useful crash report unless you
+make it completely automatic.&lt;/p&gt;
+&lt;p&gt;The project will have two screens:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Client Bug Reporting Interface&lt;/li&gt;
+&lt;li&gt;Admin Dashboard(unified view of collected bugs)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="model_diagram" src="https://rihbyne.github.io/blog/gsoc-2013/gsoc_model_diagram1.png"&gt;&lt;/p&gt;
+&lt;h2 id="collecting-data"&gt;Collecting Data:&lt;/h2&gt;
+&lt;p&gt;What data should be collected that will help developers find the crash?&lt;/p&gt;
+&lt;p&gt;Here is the list of data that can be collected from User System:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The OS type and version&lt;/li&gt;
+&lt;li&gt;Web Browser type and version&lt;/li&gt;
+&lt;li&gt;filename&lt;/li&gt;
+&lt;li&gt;line number in the code where the crash occurred&lt;/li&gt;
+&lt;li&gt;The error message, as a string&lt;/li&gt;
+&lt;li&gt;unique numeric code for this type of error(Bug ID)&lt;/li&gt;
+&lt;li&gt;Image capturing&lt;/li&gt;
+&lt;li&gt;The user’s description of what they were doing&lt;/li&gt;
+&lt;li&gt;The user’s email address(optional)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It is also possible that the more questions you ask users, the less
+likely they are to answer. So I plan to ask bare minimum number of
+questions that we think will help us diagnose the problem. What were you
+doing? What is your email address? I emphasize that providing an email
+address is optional, to alleviate privacy concerns.&lt;/p&gt;
+&lt;p&gt;Importantly knowing the exact line of code where the code crashed is key
+information to fix almost any crash. For rare cases where this isn’t
+enough information, developers can contact one of the users who
+experienced the crash via email and ask for any additional information
+that might help. The benefit of gathering so little information is that
+the crash reporting process is very fast, making users less impatient.&lt;/p&gt;
+&lt;p&gt;Response to the server will be a JSON file which indicates that the
+report was received, and includes a message which is displayed to the
+user&lt;/p&gt;
+&lt;p&gt;Their also could be a possible scenario where crash was strong and
+severe which caused working code to fail to send report instantly. So
+in such case save the specific crash message to a file and then send it
+the next time user reloads the web page(on browser restart).
+All crash reports arrive at Tim Videos bug tracking database via a
+single URL.Our bug tracking database receives bug reports via this
+unique URL.In fact that URL is the only public access to our database;
+everything else is locked out, so users can submit bugs, but they can’t
+get into the database.&lt;/p&gt;
+&lt;h2 id="in-case-of-duplicate-crashes"&gt;In case of Duplicate Crashes:&lt;/h2&gt;
+&lt;p&gt;An important aspect of automatic crash collection is that the same crash
+will probably happen many times to many users of the program, and
+therefore no new bug should be generated for every duplicate of the
+crash.This can be handled by constructing a unique string that
+contains key elements of the crash data.The application will determine
+duplicate errors by checking whether they have the same error ID.&lt;/p&gt;
+&lt;p&gt;The error ID is composed as follows:
+&lt;code&gt;File_name:Line_num&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In cases where new incoming errors are duplicates of old errors, the errors will not be dumbed into
+the tracker instead they will be added as a comment to the original error report&lt;/li&gt;
+&lt;li&gt;TimVideo bug tracker will automatically append future crashes with the same unique string to current
+case, by identifying the Error_ID rather than opening a new case&lt;/li&gt;
+&lt;li&gt;This helps the programmer/developer see all the duplicates of the same crash in one place&lt;/li&gt;
+&lt;li&gt;The only new information contained in duplicate errors will be the comments, and (possibly) their stacktrace&lt;/li&gt;
+&lt;li&gt;The stacktrace will be appended to the end of the user comment(bug description)&lt;/li&gt;
+&lt;li&gt;Also the error ID is displayed in the title, there is an “Occurrences” field (which lists the number
+of times this error has occurred), and there is an Action drop-down menu (which lets the admin accept
+errors,delete it or postpone that decision).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="search-for-bugs"&gt;search for bugs:&lt;/h2&gt;
+&lt;p&gt;If time permits then I plan to built a search feature onto the admin dashboard. I plan to set up the
+title in such a way that it can be easily searched for particular problems. Since I use the title format as &lt;strong&gt;filename:lineNumber&lt;/strong&gt; (note the colons), it’s
+easy to search for bugs in a particular function just by searching for “filename” or “lineNumber” or
+both.&lt;/p&gt;
+&lt;p&gt;Bug Reporter can have following tabs in which the crash information will
+be organized:
+&lt;img alt="admin_dashboard" src="https://rihbyne.github.io/blog/gsoc-2013/gsoc_admin_dashboard.png"&gt;&lt;/p&gt;
+&lt;p&gt;Following control flow diagram demonstrates report handling by
+developers:
+&lt;img alt="bg_flow" src="https://rihbyne.github.io/blog/gsoc-2013/gsoc_bg_flow.png"&gt;&lt;/p&gt;
+&lt;h2 id="utilities-for-implementation"&gt;Utilities for implementation:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Python Web framework -&amp;gt; Django 1.5&lt;/li&gt;
+&lt;li&gt;Web Server -&amp;gt; For deploying Django site I will use Apache2 with its&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;mod_python&lt;/strong&gt; module because it is well tested and well Documented&lt;/li&gt;
+&lt;li&gt;Deployment option&lt;/li&gt;
+&lt;li&gt;Database -&amp;gt; PostgreSQL(To use PostgreSQL with Django I prefer utility interface library
+   psycopg2)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="client-user-interface-design"&gt;Client User Interface Design:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Django default template Engine&lt;/li&gt;
+&lt;li&gt;Jquery-1.8.3.min.js&lt;/li&gt;
+&lt;li&gt;jquery.ajax() utility for asynchronously loading and submiting crash data.&lt;/li&gt;
+&lt;li&gt;Stylus&lt;ul&gt;
+&lt;li&gt;CSS preprocessor engine(This utility provides easy way to write css and enhanced features like
+function reusability)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="admin-dashboard"&gt;Admin Dashboard:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Dashboard UI&lt;/strong&gt;:&lt;ul&gt;
+&lt;li&gt;Django 1.5&lt;ul&gt;
+&lt;li&gt;I will use connection module from Django.db to execute raw SQL commands
+ mail module from django.core to send emails to users for feedbacks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Jquery-1.8.3.min.js&lt;/li&gt;
+&lt;li&gt;Stylus&lt;ul&gt;
+&lt;li&gt;CSS preprocessor engine&lt;/li&gt;
+&lt;li&gt;more info -&amp;gt;  &lt;a href="http://earnboost.github.io/stylus/"&gt;http://earnboost.github.io/stylus/‎&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Html5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="deliverables"&gt;Deliverables:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;users can open a form (without logging in) to report issue&lt;/li&gt;
+&lt;li&gt;Form will have a TextArea to fill in description of the bug, a checkbox if enabled
+ will force user to enter email_id, auto image capturing and
+ automatically captured crash&lt;/li&gt;
+&lt;li&gt;Form will be simple and jargon free&lt;/li&gt;
+&lt;li&gt;users should be able to report bugs without logging in and without
+ registration&lt;/li&gt;
+&lt;li&gt;when someone reports bug, server parses the jsondata to nicely formated
+ structure for dashboard view&lt;/li&gt;
+&lt;li&gt;when a developer ends bugfix cycle he/she should be able to “close it”&lt;/li&gt;
+&lt;li&gt;On the admin dashboard there will be automatically updated list of bugs
+ reported with status so that other users can see what was just fixed&lt;/li&gt;
+&lt;li&gt;It should allow voting on bugs by users, but it’s not a requirement.(optional feature)
+ each specific bug report(optional feature)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="benefits-for-timvideos-organization"&gt;Benefits for TimVideos Organization:&lt;/h2&gt;
+&lt;p&gt;I admit to make an attempt to deliver a working automated bug reporter
+which will help TimVideos improve there project quality, reduce
+development time and also provide useful crash reports for better
+inspection and debugging.&lt;/p&gt;
+&lt;h2 id="proposal-timeline"&gt;Proposal Timeline:&lt;/h2&gt;
+&lt;p&gt;I will be having my exams starting from 11th May to 7th June. To be specific I will have exams on
+following days:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;11th May(Saturday)&lt;/li&gt;
+&lt;li&gt;18th May (Saturday)&lt;/li&gt;
+&lt;li&gt;23th May (Thursday)&lt;/li&gt;
+&lt;li&gt;29th May(Wednesday)&lt;/li&gt;
+&lt;li&gt;3rd June(Monday)&lt;/li&gt;
+&lt;li&gt;7th June( Friday)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;PS - During exam days I will not be active for project discussions and code
+building since I will be busy studying. But sooner after examination I
+will start with my regular schedule with 40 hours a week work&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I plan to complete my GSoC project by following the schedule given
+below.&lt;/p&gt;
+&lt;h2 id="before-june-16"&gt;Before June 16:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Familiarize myself with TimVideos streaming System.&lt;/li&gt;
+&lt;li&gt;Become familiar with Sphinx auto documenting tool&lt;/li&gt;
+&lt;li&gt;Setup development environment considering project dependencies&lt;/li&gt;
+&lt;li&gt;Initialize git repository&lt;/li&gt;
+&lt;li&gt;Design User stories which will be delivered in milestone 1.0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="june-17-official-coding-period-begins"&gt;June 17: Official coding period begins:&lt;/h2&gt;
+&lt;p&gt;In this phase I plan to deliver a working application with its basline functionality created successfully.
+Milestone 1.0 will be my first major release.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;June 17 - June 22&lt;/strong&gt; : Design schema and entity relationship diagram and implement database scripts to make database ready&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;June 25 - June 29&lt;/strong&gt; : Implement UI for Admin Dashboard and write test code&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;July 1 - July 6&lt;/strong&gt; : Implement user report form&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;July 8 - July 13&lt;/strong&gt; : Implement program to collect crashreport(packagename, filename, linenumber) and other details&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;July 15 - July 20&lt;/strong&gt; : implement code to transfer and parse bug data to be insert into database and write test code&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;July 22 -July 27&lt;/strong&gt; : check for bugs and missing functionality.write documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If some User stories with iterations cannot be completed,then they are
+postponed to next milestone.&lt;/p&gt;
+&lt;h2 id="august-2-midterm-evaluation-milestone-10"&gt;August 2: Midterm Evaluation (Milestone 1.0):&lt;/h2&gt;
+&lt;p&gt;Code planned for Milestone 1.0 is submitted.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;August 3 - August 10&lt;/strong&gt; : Complete leftover user stories from Milestone 1.0.Refine baseline functionality
+by writing robust code.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;August 12 - August 17&lt;/strong&gt; : Implement code for sending email to users for getting feedback/asking additional
+info about the bug and write test code&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;August 19 - August 24&lt;/strong&gt; : Write code to avoid generating duplicate bug reports, write test code&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;August 26 - August 31&lt;/strong&gt; : Implement action drop-down button to accept, delete particular bug, write test code&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;September 2 - September 7&lt;/strong&gt; : Implement &amp;lsquo;close bug&amp;rsquo; feature to stop bug life cycle, write test code&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;September 9 -September 14&lt;/strong&gt; : Experiment, write code for capture image(crashed web page) which can be
+compressed and send to the server, write test code&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;September 16(&amp;lsquo;pencils down&amp;rsquo; date)&lt;/strong&gt; - September 21 : update documentation, check with various test cases, remove unused code&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="september-23-final-evaluations-milestone-20"&gt;September 23: Final evaluations (Milestone 2.0):&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;At this point, I make sure that my proposed project functions as Expected&lt;/li&gt;
+&lt;li&gt;This is the point where a set of functionality meets needs of the users&lt;/li&gt;
+&lt;li&gt;Finally commit untracked code to git repository and push to Github&lt;/li&gt;
+&lt;li&gt;Submit code sample to Google&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="personal-information"&gt;Personal Information:&lt;/h2&gt;
+&lt;p&gt;I am 3rd year undergraduate student from India majoring in Information
+Technology pursuing Bachelor degree. I prefer to communicate mostly using
+IRC and email. I would also like to update my work progress on twitter
+post.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;email : rihen234@gmail.com&lt;/li&gt;
+&lt;li&gt;IRC network : freenode.net&lt;/li&gt;
+&lt;li&gt;IRC Nickname: rihbyne&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;what I will be doing next in the upcoming week.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;User stories that I completed.&lt;/li&gt;
+&lt;li&gt;User stories in progress.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="open-source-experience"&gt;Open Source Experience:&lt;/h2&gt;
+&lt;p&gt;I was inspired and motivated by the speech of Richard Stallman, who is the founder of Emacs Text Editor to join Free
+and open source software development ecosystem which motivated me to write code for FOSS. I believe that getting yourself involved into a open source software community helps you to gauge where you stand as an maker when it comes to solving real world problems. I have been exploring open source utilities and I have never turned back. Initially, in the beginning I was not aware of VC concepts in general but figured that out through web sources. Over time things got interesting day by day.&lt;/p&gt;
+&lt;p&gt;Following developer tools that I just started using few months ago:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vim &lt;/li&gt;
+&lt;li&gt;Emacs&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I have Python web development with Django experience of approx. 7 months, javascript/html/css of approx.
+12 months. I have come across various version control types like DVCS and CVS. Git is an example of DVCS which is highly favoured by folks around FOSS projects.&lt;/p&gt;
+&lt;p&gt;My Github repository link: &lt;a href="https://github.com/rihbyne"&gt;https://github.com/rihbyne&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="project-contributions"&gt;Project contributions:&lt;/h2&gt;
+&lt;p&gt;A web-based 2-tier application started for our local family doctor, written in PHP, MySQL, javascript, html.
+The project is still in initial phase of development. We are 4 to 5 contributors for the project.
+The project makes use of CodeIgnitor PHP MVC framework for easy development and time constraints.
+Currently the project is not active. This project was started as a hobby and means of practice.
+Link to the project: &lt;a href="http://code.google.com/p/patient-info-system/"&gt;http://code.google.com/p/patient-info-system/&lt;/a&gt;&lt;/p&gt;</content><category term="gsoc"></category><category term="2013"></category><category term="python"></category><category term="Django"></category><category term="js"></category><category term="css"></category><category term="xhtml"></category><category term="open source"></category><category term="git"></category></entry></feed>

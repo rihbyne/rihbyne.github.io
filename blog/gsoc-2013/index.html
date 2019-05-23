@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>    Bug Reporter GSOC 2013
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://rihbyne.github.io/theme/css/cid.css">
+        <link href="https://rihbyne.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="swlogs Atom Feed" />
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+            <div class="container">
+
+<style rel="text/css">
+ body p {
+    text-align: justify
+ }
+
+ .site-logo {
+    float: left;
+  }
+.container .blog-header h1 , .container .blog-header p {
+}
+.container .blog-header h1 {
+
+    display: inline-block;
+}
+.site-logo img {
+    width: 100%;
+    max-width: 110px;
+    height: auto;
+margin-right:25px;
+}
+
+ .blog-header nav a {
+    text-decoration:none;
+     color: blue;
+ }
+
+ .blog-footer .nav a {
+     text-decoration: none;
+     color: blue;
+ }
+
+ .blog-footer .nav .dots {
+     font-weight: bold;
+ }
+</style>
+<header class="blog-header">
+  <div class="header-container" style="height: auto">
+    <div class="site-logo" >
+       <img  src="https://rihbyne.github.io/images/android-chrome-512x512.png">
+    </div>
+    <div>
+      <h1>
+       <a href="https://rihbyne.github.io">swlogs</a>
+      </h1>
+      <p> recording happenings around </p>
+    </div>
+  </div>
+        <nav>
+           <a href="https://rihbyne.github.io/blog">INDEX</a>
+           <span class="header-dots">.</span>
+           <a href="https://rihbyne.github.io/archives">ARCHIVES</a>
+           <span class="header-dots">.</span>
+           <a href="https://rihbyne.github.io/categories">CATEGORIES</a>
+           <span class="header-dots">.</span>
+           <a href="https://rihbyne.github.io/tags">TAGS</a>
+       </nav>
+</header>
+
+    <div class="post">
+        <header>
+            <h1>Bug Reporter GSOC 2013</h1>
+            <p class="date">
+              Posted on May 03 2013 12:50 in
+              <a href="https://rihbyne.github.io/category/softwaredesign">
+                softwaredesign
+              </a>
+
+              &#8226; 8 min read
+            </p>
+        </header>
+
+        <article>
+          <div>
+            <p>This summer I plan to implement a popular technique of collecting
+crash/bug reports via HTTP and automatically parse it into
+sections, insert the fields in our bug tracking database, allowing
+TimVideo developers to find and fix bugs that only happened in the
+field. These are usually the kinds of bugs we can never catch in the
+development mode, since the developers couldn’t possibly reproduce
+every bizarre PC configuration remote users might have.
+This bug detection and reporting has become common technique to take
+care of reporting its own crashes.It is important to find out about
+every crash, anywhere in the world to deliver a high quality working
+program that will be used concurrently.
+Sometimes it is not a great idea to rely on users to tell you about
+tiny details of bug because its possible that many of them are not
+technical enough, and most of them won’t bother to take time off of
+their own important work to give you a useful crash report unless you
+make it completely automatic.</p>
+<p>The project will have two screens:</p>
+<ul>
+<li>Client Bug Reporting Interface</li>
+<li>Admin Dashboard(unified view of collected bugs)</li>
+</ul>
+<p><img alt="model_diagram" src="https://rihbyne.github.io/blog/gsoc-2013/gsoc_model_diagram1.png"></p>
+<h2 id="collecting-data">Collecting Data:</h2>
+<p>What data should be collected that will help developers find the crash?</p>
+<p>Here is the list of data that can be collected from User System:</p>
+<ul>
+<li>The OS type and version</li>
+<li>Web Browser type and version</li>
+<li>filename</li>
+<li>line number in the code where the crash occurred</li>
+<li>The error message, as a string</li>
+<li>unique numeric code for this type of error(Bug ID)</li>
+<li>Image capturing</li>
+<li>The user’s description of what they were doing</li>
+<li>The user’s email address(optional)</li>
+</ul>
+<p>It is also possible that the more questions you ask users, the less
+likely they are to answer. So I plan to ask bare minimum number of
+questions that we think will help us diagnose the problem. What were you
+doing? What is your email address? I emphasize that providing an email
+address is optional, to alleviate privacy concerns.</p>
+<p>Importantly knowing the exact line of code where the code crashed is key
+information to fix almost any crash. For rare cases where this isn’t
+enough information, developers can contact one of the users who
+experienced the crash via email and ask for any additional information
+that might help. The benefit of gathering so little information is that
+the crash reporting process is very fast, making users less impatient.</p>
+<p>Response to the server will be a JSON file which indicates that the
+report was received, and includes a message which is displayed to the
+user</p>
+<p>Their also could be a possible scenario where crash was strong and
+severe which caused working code to fail to send report instantly. So
+in such case save the specific crash message to a file and then send it
+the next time user reloads the web page(on browser restart).
+All crash reports arrive at Tim Videos bug tracking database via a
+single URL.Our bug tracking database receives bug reports via this
+unique URL.In fact that URL is the only public access to our database;
+everything else is locked out, so users can submit bugs, but they can’t
+get into the database.</p>
+<h2 id="in-case-of-duplicate-crashes">In case of Duplicate Crashes:</h2>
+<p>An important aspect of automatic crash collection is that the same crash
+will probably happen many times to many users of the program, and
+therefore no new bug should be generated for every duplicate of the
+crash.This can be handled by constructing a unique string that
+contains key elements of the crash data.The application will determine
+duplicate errors by checking whether they have the same error ID.</p>
+<p>The error ID is composed as follows:
+<code>File_name:Line_num</code></p>
+<ul>
+<li>In cases where new incoming errors are duplicates of old errors, the errors will not be dumbed into
+the tracker instead they will be added as a comment to the original error report</li>
+<li>TimVideo bug tracker will automatically append future crashes with the same unique string to current
+case, by identifying the Error_ID rather than opening a new case</li>
+<li>This helps the programmer/developer see all the duplicates of the same crash in one place</li>
+<li>The only new information contained in duplicate errors will be the comments, and (possibly) their stacktrace</li>
+<li>The stacktrace will be appended to the end of the user comment(bug description)</li>
+<li>Also the error ID is displayed in the title, there is an “Occurrences” field (which lists the number
+of times this error has occurred), and there is an Action drop-down menu (which lets the admin accept
+errors,delete it or postpone that decision).</li>
+</ul>
+<h2 id="search-for-bugs">search for bugs:</h2>
+<p>If time permits then I plan to built a search feature onto the admin dashboard. I plan to set up the
+title in such a way that it can be easily searched for particular problems. Since I use the title format as <strong>filename:lineNumber</strong> (note the colons), it’s
+easy to search for bugs in a particular function just by searching for “filename” or “lineNumber” or
+both.</p>
+<p>Bug Reporter can have following tabs in which the crash information will
+be organized:
+<img alt="admin_dashboard" src="https://rihbyne.github.io/blog/gsoc-2013/gsoc_admin_dashboard.png"></p>
+<p>Following control flow diagram demonstrates report handling by
+developers:
+<img alt="bg_flow" src="https://rihbyne.github.io/blog/gsoc-2013/gsoc_bg_flow.png"></p>
+<h2 id="utilities-for-implementation">Utilities for implementation:</h2>
+<ul>
+<li>Python Web framework -&gt; Django 1.5</li>
+<li>Web Server -&gt; For deploying Django site I will use Apache2 with its</li>
+<li><strong>mod_python</strong> module because it is well tested and well Documented</li>
+<li>Deployment option</li>
+<li>Database -&gt; PostgreSQL(To use PostgreSQL with Django I prefer utility interface library
+   psycopg2)</li>
+</ul>
+<h2 id="client-user-interface-design">Client User Interface Design:</h2>
+<ul>
+<li>Django default template Engine</li>
+<li>Jquery-1.8.3.min.js</li>
+<li>jquery.ajax() utility for asynchronously loading and submiting crash data.</li>
+<li>Stylus<ul>
+<li>CSS preprocessor engine(This utility provides easy way to write css and enhanced features like
+function reusability)</li>
+</ul>
+</li>
+</ul>
+<h2 id="admin-dashboard">Admin Dashboard:</h2>
+<ul>
+<li><strong>Dashboard UI</strong>:<ul>
+<li>Django 1.5<ul>
+<li>I will use connection module from Django.db to execute raw SQL commands
+ mail module from django.core to send emails to users for feedbacks</li>
+</ul>
+</li>
+<li>Jquery-1.8.3.min.js</li>
+<li>Stylus<ul>
+<li>CSS preprocessor engine</li>
+<li>more info -&gt;  <a href="http://earnboost.github.io/stylus/">http://earnboost.github.io/stylus/‎</a></li>
+</ul>
+</li>
+<li>Html5</li>
+</ul>
+</li>
+</ul>
+<h2 id="deliverables">Deliverables:</h2>
+<ul>
+<li>users can open a form (without logging in) to report issue</li>
+<li>Form will have a TextArea to fill in description of the bug, a checkbox if enabled
+ will force user to enter email_id, auto image capturing and
+ automatically captured crash</li>
+<li>Form will be simple and jargon free</li>
+<li>users should be able to report bugs without logging in and without
+ registration</li>
+<li>when someone reports bug, server parses the jsondata to nicely formated
+ structure for dashboard view</li>
+<li>when a developer ends bugfix cycle he/she should be able to “close it”</li>
+<li>On the admin dashboard there will be automatically updated list of bugs
+ reported with status so that other users can see what was just fixed</li>
+<li>It should allow voting on bugs by users, but it’s not a requirement.(optional feature)
+ each specific bug report(optional feature)</li>
+</ul>
+<h2 id="benefits-for-timvideos-organization">Benefits for TimVideos Organization:</h2>
+<p>I admit to make an attempt to deliver a working automated bug reporter
+which will help TimVideos improve there project quality, reduce
+development time and also provide useful crash reports for better
+inspection and debugging.</p>
+<h2 id="proposal-timeline">Proposal Timeline:</h2>
+<p>I will be having my exams starting from 11th May to 7th June. To be specific I will have exams on
+following days:</p>
+<ul>
+<li>11th May(Saturday)</li>
+<li>18th May (Saturday)</li>
+<li>23th May (Thursday)</li>
+<li>29th May(Wednesday)</li>
+<li>3rd June(Monday)</li>
+<li>7th June( Friday)</li>
+</ul>
+<p><em>PS - During exam days I will not be active for project discussions and code
+building since I will be busy studying. But sooner after examination I
+will start with my regular schedule with 40 hours a week work</em></p>
+<p>I plan to complete my GSoC project by following the schedule given
+below.</p>
+<h2 id="before-june-16">Before June 16:</h2>
+<ul>
+<li>Familiarize myself with TimVideos streaming System.</li>
+<li>Become familiar with Sphinx auto documenting tool</li>
+<li>Setup development environment considering project dependencies</li>
+<li>Initialize git repository</li>
+<li>Design User stories which will be delivered in milestone 1.0</li>
+</ul>
+<h2 id="june-17-official-coding-period-begins">June 17: Official coding period begins:</h2>
+<p>In this phase I plan to deliver a working application with its basline functionality created successfully.
+Milestone 1.0 will be my first major release.</p>
+<ul>
+<li><strong>June 17 - June 22</strong> : Design schema and entity relationship diagram and implement database scripts to make database ready</li>
+<li><strong>June 25 - June 29</strong> : Implement UI for Admin Dashboard and write test code</li>
+<li><strong>July 1 - July 6</strong> : Implement user report form</li>
+<li><strong>July 8 - July 13</strong> : Implement program to collect crashreport(packagename, filename, linenumber) and other details</li>
+<li><strong>July 15 - July 20</strong> : implement code to transfer and parse bug data to be insert into database and write test code</li>
+<li><strong>July 22 -July 27</strong> : check for bugs and missing functionality.write documentation.</li>
+</ul>
+<p>If some User stories with iterations cannot be completed,then they are
+postponed to next milestone.</p>
+<h2 id="august-2-midterm-evaluation-milestone-10">August 2: Midterm Evaluation (Milestone 1.0):</h2>
+<p>Code planned for Milestone 1.0 is submitted.</p>
+<ul>
+<li><strong>August 3 - August 10</strong> : Complete leftover user stories from Milestone 1.0.Refine baseline functionality
+by writing robust code.</li>
+<li><strong>August 12 - August 17</strong> : Implement code for sending email to users for getting feedback/asking additional
+info about the bug and write test code</li>
+<li><strong>August 19 - August 24</strong> : Write code to avoid generating duplicate bug reports, write test code</li>
+<li><strong>August 26 - August 31</strong> : Implement action drop-down button to accept, delete particular bug, write test code</li>
+<li><strong>September 2 - September 7</strong> : Implement &lsquo;close bug&rsquo; feature to stop bug life cycle, write test code</li>
+<li><strong>September 9 -September 14</strong> : Experiment, write code for capture image(crashed web page) which can be
+compressed and send to the server, write test code</li>
+<li><strong>September 16(&lsquo;pencils down&rsquo; date)</strong> - September 21 : update documentation, check with various test cases, remove unused code</li>
+</ul>
+<h2 id="september-23-final-evaluations-milestone-20">September 23: Final evaluations (Milestone 2.0):</h2>
+<ul>
+<li>At this point, I make sure that my proposed project functions as Expected</li>
+<li>This is the point where a set of functionality meets needs of the users</li>
+<li>Finally commit untracked code to git repository and push to Github</li>
+<li>Submit code sample to Google</li>
+</ul>
+<h2 id="personal-information">Personal Information:</h2>
+<p>I am 3rd year undergraduate student from India majoring in Information
+Technology pursuing Bachelor degree. I prefer to communicate mostly using
+IRC and email. I would also like to update my work progress on twitter
+post.</p>
+<ul>
+<li>email : rihen234@gmail.com</li>
+<li>IRC network : freenode.net</li>
+<li>IRC Nickname: rihbyne</li>
+</ul>
+<p>what I will be doing next in the upcoming week.</p>
+<ul>
+<li>User stories that I completed.</li>
+<li>User stories in progress.</li>
+</ul>
+<h2 id="open-source-experience">Open Source Experience:</h2>
+<p>I was inspired and motivated by the speech of Richard Stallman, who is the founder of Emacs Text Editor to join Free
+and open source software development ecosystem which motivated me to write code for FOSS. I believe that getting yourself involved into a open source software community helps you to gauge where you stand as an maker when it comes to solving real world problems. I have been exploring open source utilities and I have never turned back. Initially, in the beginning I was not aware of VC concepts in general but figured that out through web sources. Over time things got interesting day by day.</p>
+<p>Following developer tools that I just started using few months ago:</p>
+<ol>
+<li>Vim </li>
+<li>Emacs</li>
+</ol>
+<p>I have Python web development with Django experience of approx. 7 months, javascript/html/css of approx.
+12 months. I have come across various version control types like DVCS and CVS. Git is an example of DVCS which is highly favoured by folks around FOSS projects.</p>
+<p>My Github repository link: <a href="https://github.com/rihbyne">https://github.com/rihbyne</a></p>
+<h2 id="project-contributions">Project contributions:</h2>
+<p>A web-based 2-tier application started for our local family doctor, written in PHP, MySQL, javascript, html.
+The project is still in initial phase of development. We are 4 to 5 contributors for the project.
+The project makes use of CodeIgnitor PHP MVC framework for easy development and time constraints.
+Currently the project is not active. This project was started as a hobby and means of practice.
+Link to the project: <a href="http://code.google.com/p/patient-info-system/">http://code.google.com/p/patient-info-system/</a></p>
+          </div>
+          <div>
+            <p>
+              Tags -
+                    <a href="https://rihbyne.github.io/tag/gsoc">gsoc</a>
+                    <a href="https://rihbyne.github.io/tag/2013">2013</a>
+                    <a href="https://rihbyne.github.io/tag/python">python</a>
+                    <a href="https://rihbyne.github.io/tag/django">Django</a>
+                    <a href="https://rihbyne.github.io/tag/js">js</a>
+                    <a href="https://rihbyne.github.io/tag/css">css</a>
+                    <a href="https://rihbyne.github.io/tag/xhtml">xhtml</a>
+                    <a href="https://rihbyne.github.io/tag/open-source">open source</a>
+                    <a href="https://rihbyne.github.io/tag/git">git</a>
+            </p>
+          </div>
+        </article>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'swlogs';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            dsq.setAttribute('data-timestamp', +new Date());
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+    </div>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+                    <li><a href="https://rihbyne.github.io/blog">posts</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/diy">solos</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/downloadables/resume.pdf">resume</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/https://goodreads.com/rihanpereira">reading</a></li>
+                    <li class="dots">.</li>
+    </ul>
+
+    <p class="disclaimer">
+        Rihan &copy; 2019. Contents are <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.
+    </p>
+</footer>
+            </div>
+    </body>
+</html>

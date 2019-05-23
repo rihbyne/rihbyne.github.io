@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>swlogs - Notification Core daemon</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://rihbyne.github.io/theme/css/cid.css">
+        <link href="https://rihbyne.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="swlogs Atom Feed" />
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+            <div class="container">
+
+<style rel="text/css">
+ body p {
+    text-align: justify
+ }
+
+ .site-logo {
+    float: left;
+  }
+.container .blog-header h1 , .container .blog-header p {
+}
+.container .blog-header h1 {
+
+    display: inline-block;
+}
+.site-logo img {
+    width: 100%;
+    max-width: 110px;
+    height: auto;
+margin-right:25px;
+}
+
+ .blog-header nav a {
+    text-decoration:none;
+     color: blue;
+ }
+
+ .blog-footer .nav a {
+     text-decoration: none;
+     color: blue;
+ }
+
+ .blog-footer .nav .dots {
+     font-weight: bold;
+ }
+</style>
+<header class="blog-header">
+  <div class="header-container" style="height: auto">
+    <div class="site-logo" >
+       <img  src="https://rihbyne.github.io/images/android-chrome-512x512.png">
+    </div>
+    <div>
+      <h1>
+       <a href="https://rihbyne.github.io">swlogs</a>
+      </h1>
+      <p> recording happenings around </p>
+    </div>
+  </div>
+</header>
+    <h1>Notification Core daemon</h1>
+    
+
+    <h2 id="purpose">Purpose:</h2>
+<p>The need to persist data subsets across multiple collections arose when I stressed about achieving optimal data retrieval from MongoDB considering the volume of data sent and stored on average will be severely high.
+This functionality was reused across many backend services. I am glad to have built it.
+The below figure illustrates the mechanism taking place at app runtime.</p>
+<p><img alt="block_diagram" src="https://rihbyne.github.io/diy/notification-core/notification_core_at_a_glance.png"></p>
+<h2 id="workings">Workings:</h2>
+<ul>
+<li>
+<p>The sacks or collections filled with data get archived periodically. This is done by setting 
+<em>NOTIFY_ARCHIVE_INTERVAL_IN_DAYS</em> in .env settings file. The constant takes in an Integer which is used by the program to watch for the timeout in milliseconds, within that period notifications can come in and get saved to the collection. For each new time interval, new collection gets created, registered and assigned to mongoose instance programmatically at runtime.This is useful as it saves the mundane task of manually creating collections, every time when it is required to create fresh collection.</p>
+</li>
+<li>
+<p>The program is also designed to be capable of recovering from server crash. If such situation occurs then the program, since its resume time, performs the math to calculate the leftover time required to reach the final timeout.So within that period, request payload may or may not come in and get saved.Its probable.If suppose say for a particular collection, crash occurs, time flies by, and program misses to update mongoose instance with new collection then the very next time the app starts again it checks for such a scenario.If such a scenario occurs then it archives the unarchived collection and assigns new collection to the mongoose instance for that running interval.</p>
+</li>
+<li>
+<p>Next, is the <em>RESET_ARCHIVE_INTERVAL_ON_CRASH</em> variable. This takes a boolean value.if set to true then the program doesn’t care about continuing on same interval: It starts new interval every time it crashes. If set to false then it considers the case where it has to continue on the same interval until it reaches its final timeout in milliseconds and start a new interval thereafter.</p>
+</li>
+</ul>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+                    <li><a href="https://rihbyne.github.io/blog">posts</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/diy">solos</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/downloadables/resume.pdf">resume</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/https://goodreads.com/rihanpereira">reading</a></li>
+                    <li class="dots">.</li>
+    </ul>
+
+    <p class="disclaimer">
+        Rihan &copy; 2019. Contents are <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.
+    </p>
+</footer>
+            </div>
+    </body>
+</html>

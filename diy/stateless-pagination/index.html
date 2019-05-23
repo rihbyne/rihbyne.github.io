@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>swlogs - Stateless pagination API</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://rihbyne.github.io/theme/css/cid.css">
+        <link href="https://rihbyne.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="swlogs Atom Feed" />
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+            <div class="container">
+
+<style rel="text/css">
+ body p {
+    text-align: justify
+ }
+
+ .site-logo {
+    float: left;
+  }
+.container .blog-header h1 , .container .blog-header p {
+}
+.container .blog-header h1 {
+
+    display: inline-block;
+}
+.site-logo img {
+    width: 100%;
+    max-width: 110px;
+    height: auto;
+margin-right:25px;
+}
+
+ .blog-header nav a {
+    text-decoration:none;
+     color: blue;
+ }
+
+ .blog-footer .nav a {
+     text-decoration: none;
+     color: blue;
+ }
+
+ .blog-footer .nav .dots {
+     font-weight: bold;
+ }
+</style>
+<header class="blog-header">
+  <div class="header-container" style="height: auto">
+    <div class="site-logo" >
+       <img  src="https://rihbyne.github.io/images/android-chrome-512x512.png">
+    </div>
+    <div>
+      <h1>
+       <a href="https://rihbyne.github.io">swlogs</a>
+      </h1>
+      <p> recording happenings around </p>
+    </div>
+  </div>
+</header>
+    <h1>Stateless pagination API</h1>
+    
+
+    <h2 id="what-is-the-need-to-paginate">What is the need to Paginate?</h2>
+<p>While it’s entirely possible to get all of the data at once using a single database query but the data will be so large or overtime it grow so large that it’s cumbersome for the end user to view all of the data at once. Especially, if the user wishes to view only the recent data, then, in such case, it’s necessary to break a large data set into smaller, readable chunks and respond to the caller. Pagination is used in such cases where the volume of consumable data is heavy on end user side. With Pagination technique, user consumes the data in batches and only on user’s request the next page is served.</p>
+<p>This illustration explains how I pair the notifications core daemon module with paginator.</p>
+<p><img alt="block_diagram" src="https://rihbyne.github.io/diy/stateless-pagination/stateless_pagination.png"></p>
+<p>In context of its app&rsquo;s nature, the API is stateless; the server-side does not keep track  about which page the user is currently at and which page should be made available next.Instead, the API designates a cursor to end consumer upon very first request and thereafter, every time, if the user wishes to view more, he/she has to send the parameters that he/she previously received. The server-side program uses those parameters sent by the user to figure out the next page for that user. The parameter value keeps on changing on each subsequent request to the server. This is how stateless pagination works as it avoids the clutter of keeping track of each user’s request.</p>
+<p>The stateless Pagination API takes in four parameters to every user request:</p>
+<ul>
+<li><strong>bkwd_cursor</strong> - Used as a pair to fetch recent data</li>
+<li>
+<p><strong>bkwd_cursor_offset_from</strong> - Used as a pair with above variable</p>
+</li>
+<li>
+<p><strong>fwd_cursor</strong> - Used as a pair to fetch past data</p>
+</li>
+<li><strong>fwd_cursor_offset_from</strong> Used as a pair with above variable</li>
+</ul>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+                    <li><a href="https://rihbyne.github.io/blog">posts</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/diy">solos</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/downloadables/resume.pdf">resume</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/https://goodreads.com/rihanpereira">reading</a></li>
+                    <li class="dots">.</li>
+    </ul>
+
+    <p class="disclaimer">
+        Rihan &copy; 2019. Contents are <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.
+    </p>
+</footer>
+            </div>
+    </body>
+</html>

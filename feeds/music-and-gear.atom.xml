@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>swlogs - music-and-gear</title><link href="https://rihbyne.github.io/" rel="alternate"></link><link href="https://rihbyne.github.io/feeds/music-and-gear.atom.xml" rel="self"></link><id>https://rihbyne.github.io/</id><updated>2016-06-07T17:00:00+05:30</updated><subtitle>recording happenings around</subtitle><entry><title>Focusrite Scarlett 6i6 USB audio interface</title><link href="https://rihbyne.github.io/blog/usb-audio-interface" rel="alternate"></link><published>2016-06-07T17:00:00+05:30</published><updated>2016-06-07T17:00:00+05:30</updated><author><name>Rihan Pereira</name></author><id>tag:rihbyne.github.io,2016-06-07:/blog/usb-audio-interface</id><summary type="html">&lt;p&gt;The Focusrite 6 I/O channel audio interface that I bought for recording instruments&lt;/p&gt;</summary><content type="html">&lt;p&gt;Audio Interface is a useful device for connecting, consolidating multiple musical instruments and routing musical information of each instrument to audio recording software, also called as Digital Audio WorkStation(DAW).&lt;/p&gt;
+&lt;p&gt;I got this 6 I/O channel 1st generation audio interface for the very same purpose it is used for. If you are
+wondering how this device is giving you 6 I/O then here is how it goes.&lt;/p&gt;
+&lt;h2 id="6-channel-inputs"&gt;6 Channel Inputs:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;2 Combo XLR preamps at the front panel&lt;/li&gt;
+&lt;li&gt;2 Line inputs at the back panel&lt;/li&gt;
+&lt;li&gt;1 MIDI input(read midi information from some device), back panel&lt;/li&gt;
+&lt;li&gt;1 SPDIF IN (uses single RCA connector to read in audio from CD player which has SPDIF output), back panel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="6-channel-outputs"&gt;6 Channel Outputs:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;4 Line Outputs at the back panel&lt;/li&gt;
+&lt;li&gt;1 MIDI output(send midi information from computer to MIDI enabled device), back panel&lt;/li&gt;
+&lt;li&gt;1 SPDIF output(uses single RCA connector to send in unbalanced audio signal to CD player which has SPDIF IN)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Quickly, I would like to explore its front &amp;amp; back panels.&lt;/p&gt;
+&lt;h2 id="back-panel"&gt;Back Panel:&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src="../../images/soundgear/focusrite_back.jpg" width="850" height="450"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Line Inputs:&lt;/strong&gt; These are balanced jacks, can connect 7.5mm unbalanced jacks as well.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Line Outputs:&lt;/strong&gt; The line outputs numbered 1 to 4 also provide balanced signal . So far, I have used line
+outputs 1 &amp;amp; 2 to connect to one of my friend&amp;rsquo;s FX processor and have not got a chance to use outputs 3 and 4.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;USB Port:&lt;/strong&gt; connect the interface to your computer. In other words, record to USB out.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MIDI In &amp;amp; MIDI out:&lt;/strong&gt; - Haven&amp;rsquo;t used these as I dont have a MIDI-enabled device. Maybe in the future I would 
+have one. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SPDIF IN &amp;amp; OUT:&lt;/strong&gt; RCA socket required to read in/ write out audio signals from the scarlett to Home theatre&amp;rsquo;s
+which usually has SPDIF sockets.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="front-panel"&gt;Front Panel:&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src="../../images/soundgear/focusrite_front1.jpg" width="850" height="450"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;XLR Combo inputs:&lt;/strong&gt; allows you to connect mics, guitars with male XLR jacks or 7.5mm balanced or unbalanced cables.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gain control knobs:&lt;/strong&gt; Both pre-amps have individual gain control. They are equipped with illuminating LEDs in
+&amp;ldquo;circle&amp;rdquo; shape, used as gain level monitor. They remain green for normal signal and red in case of high or unexpected noisy signal.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitor knob:&lt;/strong&gt; functions as main monitor output level controller adjusting outputs 1st and 2nd at the back
+panel.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;HP 01 &amp;amp; HP 02:&lt;/strong&gt; allows you to connect stereo headphones to two TRS sockets. These headphones, to my
+understanding, get the same signal routed to outputs at the back panel.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="audio processing"></category><category term="soundcard"></category><category term="midi"></category><category term="recording"></category></entry><entry><title>Ibanez GSR-200 with Laney RB2 Bass Amp</title><link href="https://rihbyne.github.io/blog/guitar-gear" rel="alternate"></link><published>2015-12-09T16:21:00+05:30</published><updated>2015-12-09T16:21:00+05:30</updated><author><name>Rihan Pereira</name></author><id>tag:rihbyne.github.io,2015-12-09:/blog/guitar-gear</id><summary type="html">&lt;p&gt;A review about the gear I bought to play along with my cousins, friends and the community people around&lt;/p&gt;</summary><content type="html">&lt;h1 id="the-rb2-bass-amp"&gt;The RB2 Bass Amp&lt;/h1&gt;
+&lt;p&gt;This 30 Watts bass guitar Amplifier is very portable, handy to carry along with your instrument. For me it was worth purchasing as I use it for practicing and rehearsing with my fellow band mates before playing live. However, I didnt use it as a monitor at live Gigs because it wasn&amp;rsquo;t required many times as the sound guy already had monitors arranged on stage. This Amp is known for its connection options it provides out-of-box like the Equilizer, DI, and the Auxillary IN socket.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../../images/soundgear/laney_rb2_left.jpg" width="850" height="450"&gt;&lt;/p&gt;
+&lt;h6 id="front-panel-controls"&gt;Front Panel Controls&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Normal &amp;amp; High Inputs:&lt;/strong&gt;  To connect the other end of your guitar jack into one of the normal or high sockets.
+&amp;ldquo;High&amp;rdquo; input is given to connect high output bassses but you can connect high output to normal input socket.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gain:&lt;/strong&gt; To adjust the amount of gain you want into the pre-amp. You will notice that the more to turn the knob
+to a higher degree, the signal produces distortion. Therefore, its wise to adjust it along with the combination of
+volume control to achieve desired characteristics.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compression Push Down Button:&lt;/strong&gt; Alters the input signal by giving out compact signal which is unnoticeable for
+most people including me :). This Amp glows the light when their is a sudden spike in the signal, the very time when
+you play a loud note. I noticed it when my gain control was set at 7 and the light turned green when note were 
+plucked louder than the normal.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bass:&lt;/strong&gt; Very clear. Regulates bassy sound by masking out low-frequency in the signal&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Para-Mids:&lt;/strong&gt; Cancel or enhance mid frequencies.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Treble:&lt;/strong&gt; Controls the bass(high frequency) signal. Not used so far. I am not sure but the knob malfunctions 
+and produces humming sound, so its always zero.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CD/Line In:&lt;/strong&gt; Its a Aux IN. Plays records from external music player. Very useful for playing to backing tracks&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Direct Input(D.I):&lt;/strong&gt; If connected, takes the balanced signal from the pre-amplifier to PA system or FX mixer
+console&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="ibanez-gsr-200-bass-guitar"&gt;Ibanez GSR 200 Bass Guitar:&lt;/h1&gt;
+&lt;p&gt;&lt;img src="../../images/soundgear/ibanez_gsr200.jpg" width="450" height="150"&gt;&lt;/p&gt;
+&lt;p&gt;After consulting few bass players on the music forums, I settled for this infamous entry-level bass. So far, this
+guitar has played nicely during live gigs. I am using everything factory included. I had to adjust its truss rod
+and replaced its strings to light gauge.&lt;/p&gt;
+&lt;p&gt;Here is a one of the video songs from our concert:&lt;/p&gt;
+&lt;div class="youtube" align="center"&gt;
+&lt;iframe width="800" height="500" src="https://www.youtube.com/embed/Jz5gt6mWXbs" frameborder="0"&gt;&lt;/iframe&gt;
+&lt;/div&gt;</content><category term="music"></category><category term="bass instrument"></category><category term="laney"></category><category term="amplifier"></category><category term="amateur"></category><category term="ibanez"></category></entry></feed>

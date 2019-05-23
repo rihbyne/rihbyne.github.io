@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>swlogs - Putting together a basic, functional Crypto-Currency wallet</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://rihbyne.github.io/theme/css/cid.css">
+        <link href="https://rihbyne.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="swlogs Atom Feed" />
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+            <div class="container">
+
+<style rel="text/css">
+ body p {
+    text-align: justify
+ }
+
+ .site-logo {
+    float: left;
+  }
+.container .blog-header h1 , .container .blog-header p {
+}
+.container .blog-header h1 {
+
+    display: inline-block;
+}
+.site-logo img {
+    width: 100%;
+    max-width: 110px;
+    height: auto;
+margin-right:25px;
+}
+
+ .blog-header nav a {
+    text-decoration:none;
+     color: blue;
+ }
+
+ .blog-footer .nav a {
+     text-decoration: none;
+     color: blue;
+ }
+
+ .blog-footer .nav .dots {
+     font-weight: bold;
+ }
+</style>
+<header class="blog-header">
+  <div class="header-container" style="height: auto">
+    <div class="site-logo" >
+       <img  src="https://rihbyne.github.io/images/android-chrome-512x512.png">
+    </div>
+    <div>
+      <h1>
+       <a href="https://rihbyne.github.io">swlogs</a>
+      </h1>
+      <p> recording happenings around </p>
+    </div>
+  </div>
+</header>
+    <h1>Putting together a basic, functional Crypto-Currency wallet</h1>
+    
+
+    <h2 id="wallet-anatomy">Wallet Anatomy:</h2>
+<p><img alt="block_diagram" src="https://rihbyne.github.io/diy/digital-wallet/wallet_as_a_whole.png"></p>
+<p>Above diagram displays the wallet&rsquo;s building blocks, which work together to make it function as a whole.
+Each block, also called as, unit, stacked top to bottom, starting from Two-factor Authentication(2FA) all the
+way to Transactions Unit(T.U) operates within its boundaries. The wallet requires its users to have 2FA enabled 
+to perform and take advantage of the units below it.</p>
+<ul>
+<li>
+<p><strong>Two-factor Authentication (2FA)</strong> - Important layer. Pairs user&rsquo;s identity to their respective handled
+devices, thereby adding an extra layer of security. All operations happen only after 2FA is enabled.</p>
+</li>
+<li>
+<p><strong>Send-Receive Unit</strong> - The &lsquo;Send&rsquo; operation works in 2 modes - on-chain &amp; off-chain. This unit is responsible for sending/receiving money within its local/external user base.</p>
+</li>
+<li>
+<p><strong>Purchase Unit</strong> - Also referred to as Deposit unit. Allows users of the wallet to buy app&rsquo;s assets, virtual currency called as YNE(example currency, for name sake) against bitcoin, ethereum, litecoin, stripe(USD).</p>
+</li>
+<li>
+<p><strong>Payout Unit</strong> - Also known as Withdrawals unit, runs as a background job within the wallet ecosystem. Its job is to move funds from user local account into any other external wallet.</p>
+</li>
+<li>
+<p><strong>Know-Your-Customer Unit</strong> - Manages, controls resources that can be made available to wallet userbase. Comprised of 3-levels, regulates how many send-receive, purchase, payout operations can be performed on daily basis.</p>
+</li>
+<li>
+<p><strong>Transaction Unit</strong> - Records wallet operations as a transaction.</p>
+</li>
+</ul>
+<h2 id="payoutwithdrawals-purchasedeposit-unit-workings">Payout(Withdrawals) &amp; Purchase(Deposit) Unit Workings:</h2>
+<p>For both these units, I aspired to make them fault-tolerant but my lack of know-how about it kept me away from
+implementating it. I went ahead to handle code crash/failure events by making each of them save their state before
+terminating. How did I achieve this ? - very simple. I watch for SIGTERM, SIGKILL, SIGINT, and SIGUSR2 events
+within the units. On next app boot, the app resumes from the state retained in JSON file thus resuming pending
+operations before proceeding with new operations in a queue.</p>
+<p>The illustration gives self-explainatory guidance on behaviours of the units.</p>
+<p><img alt="block_diagram" src="https://rihbyne.github.io/diy/digital-wallet/punit.png"></p>
+<h1 id="version-2-update">Version 2 update:</h1>
+<h2 id="on-chain-transactionstxns">On-chain Transactions(txns):</h2>
+<p>These transactions which happen, get propagated and recorded across blockchain/bitcoin network are called on-chain transactions.
+On-chain operation include options for sending equivalent of bitcoin, ethereum, and other cryptocurrencies to external wallet. Typically, for multi-currency support function, one requires cryptocurrency exchange outlet. </p>
+<h2 id="off-chain-transactionstxns">Off-chain Transactions(txns):</h2>
+<p>Transactions which circulate within app’s boundaries and persist in app’s own persistent datastore are called off-chain
+transactions. Off-chain txns do not tax txn fee when moving funds between users as opposed to on-chain one. But there are limits set on how many off-chain txn can be made per day. </p>
+<h2 id="q-how-to-move-users-yne-accounts-off-chain-balance-into-on-chain-swiftly-note-just-my-opinion">Q - How to move user’s YNE account’s off-chain balance into on-chain swiftly ? (Note - Just my opinion)</h2>
+<ul>
+<li>First of all, user files a request saying that ‘transfer x amount from off-chain’s ABC pocket  to on-chain’s XYZ pocket’</li>
+<li>As soon as the request is registered, freeze(block) that x amount from off-chain’s ABC pocket, render the correct balance on refresh.</li>
+<li>The transfer request registered can be automatic, semi-automatic, entirely manual and gets approved from concerned admin.</li>
+<li>If approved, nullify the freezed amount, add x amount into his/her on-chain balance(do this by creating default wallet in
+on-chain just like bitgo) and make a transaction entry sideby. </li>
+<li>For on-chain, multi-currency outlets can be installed as adapters. Just like, as of now, we are/will be working  on bitcoin-core,
+bitcoin-cash, ripple, moneray, etc.</li>
+<li>On-chain will/can have duplex gateways for moving in/out the funds</li>
+</ul>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+                    <li><a href="https://rihbyne.github.io/blog">posts</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/diy">solos</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/downloadables/resume.pdf">resume</a></li>
+                    <li class="dots">.</li>
+                    <li><a href="https://rihbyne.github.io/https://goodreads.com/rihanpereira">reading</a></li>
+                    <li class="dots">.</li>
+    </ul>
+
+    <p class="disclaimer">
+        Rihan &copy; 2019. Contents are <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">cc by-nc-sa</a>. All opinions are of my own.
+    </p>
+</footer>
+            </div>
+    </body>
+</html>
