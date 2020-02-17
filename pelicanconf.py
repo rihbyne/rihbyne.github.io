@@ -75,8 +75,8 @@ CUSTOM_MENUITEMS = (('posts', INDEX_URL),
 LINKS = (('reading', 'https://goodreads.com/rihbyne'),)
 
 #social links
-SOCIAL = (('Github', 'https://github.com/rihbyne'),
-          ('Linkedin', 'https://linkedin.com/in/rihbyne'),
+SOCIAL = (('Github', 'https://github.com/rihenperry'),
+          ('Linkedin', 'https://linkedin.com/in/rihanp'),
           ('Soundcloud', 'https://soundcloud.com/rihbyne'),
           ('Quora', 'https://quora.com/Rihan-Pereira'),
           ('Twitter', 'https://twitter.com/rihbyne'),

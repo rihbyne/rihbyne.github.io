@@ -6,4 +6,5 @@ bin
 __pycache__
 local
 pip-selfcheck.json
+pyvenv.cfg
 output

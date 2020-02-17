@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/rihbyne/rihbyne.github.io.svg?branch=develop)](https://travis-ci.org/rihbyne/rihbyne.github.io)
+[![Build Status](https://travis-ci.org/rihenperry/rihenperry.github.io.svg?branch=develop)](https://travis-ci.org/rihenperry/rihenperry.github.io)

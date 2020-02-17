@@ -6,7 +6,7 @@ before_script:
 - git config --global user.email "rihen234@gmail.com"
 - git config --global user.name "Rihan Pereira"
 - git remote rm origin
-- git remote add origin https://user:${GITHUB_TOKEN}@github.com/rihbyne/rihbyne.github.io.git
+- git remote add origin https://user:${GITHUB_TOKEN}@github.com/rihenperry/rihenperry.github.io.git
 branches:
   only:
   - develop
@@ -18,7 +18,7 @@ script:
 - ghp-import output -b gh-pages
 deploy:
   provider: pages
-  repo: rihbyne/rihbyne.github.io
+  repo: rihenperry/rihenperry.github.io
   target_branch: master
   skip_cleanup: true
   keep_history: true
