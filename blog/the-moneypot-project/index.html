@@ -10,8 +10,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://rihbyne.github.io/theme/css/cid.css">
-        <link href="https://rihbyne.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="swlogs Atom Feed" />
+        <link rel="stylesheet" href="https://rihenperry.github.io/theme/css/cid.css">
+        <link href="https://rihenperry.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="swlogs Atom Feed" />
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -58,23 +58,23 @@ margin-right:25px;
 <header class="blog-header">
   <div class="header-container" style="height: auto">
     <div class="site-logo" >
-       <img  src="https://rihbyne.github.io/images/android-chrome-512x512.png">
+       <img  src="https://rihenperry.github.io/images/android-chrome-512x512.png">
     </div>
     <div>
       <h1>
-       <a href="https://rihbyne.github.io">swlogs</a>
+       <a href="https://rihenperry.github.io">swlogs</a>
       </h1>
       <p> recording happenings around </p>
     </div>
   </div>
         <nav>
-           <a href="https://rihbyne.github.io/blog">INDEX</a>
+           <a href="https://rihenperry.github.io/blog">INDEX</a>
            <span class="header-dots">.</span>
-           <a href="https://rihbyne.github.io/archives">ARCHIVES</a>
+           <a href="https://rihenperry.github.io/archives">ARCHIVES</a>
            <span class="header-dots">.</span>
-           <a href="https://rihbyne.github.io/categories">CATEGORIES</a>
+           <a href="https://rihenperry.github.io/categories">CATEGORIES</a>
            <span class="header-dots">.</span>
-           <a href="https://rihbyne.github.io/tags">TAGS</a>
+           <a href="https://rihenperry.github.io/tags">TAGS</a>
        </nav>
 </header>
 
@@ -83,7 +83,7 @@ margin-right:25px;
             <h1>Moneypot Project - the betting app</h1>
             <p class="date">
               Posted on Mar 14 2016 22:01 in
-              <a href="https://rihbyne.github.io/category/softwaredesign">
+              <a href="https://rihenperry.github.io/category/softwaredesign">
                 softwaredesign
               </a>
 
@@ -106,7 +106,7 @@ well as withdraw deposited funds back into the wallet once done with game playin
 users who play betting games to transfer losable money from moneypot wallet to apps and vice versa.So the
 moneypot wallet serves as a sandbox for money transfer between games that use its API.</p>
 <h2 id="components-of-moneypot">Components of Moneypot :</h2>
-<p><img alt="overview_moneypot" src="https://rihbyne.github.io/blog/the-moneypot-project/image04.png"></p>
+<p><img alt="overview_moneypot" src="https://rihenperry.github.io/blog/the-moneypot-project/image04.png"></p>
 <p>A bitcoin wallet implementation requires the use of bitcoin-core. The bitcoin-core, also called as a
 full-node is a program that is used to validate transactions and blocks.Since bitcoin doesn’t have a
 centralized governing body, anyone who runs a bitcoin-core helps the peer-to-peer network. So if you are
@@ -140,7 +140,7 @@ the network in real time to the apps which connect to it.</p>
 </li>
 </ul>
 <h2 id="apps-on-moneypot">Apps on Moneypot:</h2>
-<p><img alt="apps_moneypot" src="https://rihbyne.github.io/blog/the-moneypot-project/image10.png"></p>
+<p><img alt="apps_moneypot" src="https://rihenperry.github.io/blog/the-moneypot-project/image10.png"></p>
 <p>From the above figure,  an exampleBet.com built by its developers uses Moneypot’s API for its services.
 exampleBet.com is deployed seperately on different machine but uses moneypot’s services served at
 api.moneypot.com. Before any app can use moneypot-api, they need to register the app on moneypot-web.On
@@ -151,7 +151,7 @@ the browser app or from the server app.Just remember that, every time you make a
 have to include app_id and (access_token or app_secret) depending on the flow type, not doing so, will get
 403 status code. All the endpoints are  located at api-docs.</p>
 <h2 id="users-on-moneypot">Users on Moneypot:</h2>
-<p><img alt="api_web" src="https://rihbyne.github.io/blog/the-moneypot-project/image08.png"></p>
+<p><img alt="api_web" src="https://rihenperry.github.io/blog/the-moneypot-project/image08.png"></p>
 <p>The diagram illustrates how user uses moneypot-api and moneypot-web.The moneypot-web offers administrative
 dashboard UI for its users.User plays any of the approved games(Apps) listed on moneypot.com.Assuming User
 is not logged into any app. Before using any app, the user should login into the app he/she wishes to play.
@@ -163,7 +163,7 @@ makes,whether its a win or loss, the app developer gets the steady commission, t
 of steady commission. If user losses the bet, the wagered amount is lost and taken by the bankroll. If the user
 wins the user wins the betted amount along with the winning odds.</p>
 <h2 id="application-architecture">Application Architecture:</h2>
-<p><img alt="app_stacks" src="https://rihbyne.github.io/blog/the-moneypot-project/image05.png"></p>
+<p><img alt="app_stacks" src="https://rihenperry.github.io/blog/the-moneypot-project/image05.png"></p>
 <p>The above three figures provides a top-to-bottom view of how the services in moneypot are layered.One thing you
 will notice missing is the socketpot code layout. Thats because I dont have access to socketpot yet.All the three
 figures have the “libs” block which is the library block.It contains common javasript modules which are accessed
@@ -207,12 +207,12 @@ many koa-* middlewares in its codebase.Its simple and pluggable.</p>
           <div>
             <p>
               Tags -
-                    <a href="https://rihbyne.github.io/tag/nodejs">nodejs</a>
-                    <a href="https://rihbyne.github.io/tag/postgresql">postgresql</a>
-                    <a href="https://rihbyne.github.io/tag/generators">generators</a>
-                    <a href="https://rihbyne.github.io/tag/btc">btc</a>
-                    <a href="https://rihbyne.github.io/tag/satoshi">satoshi</a>
-                    <a href="https://rihbyne.github.io/tag/kelly-criteron">kelly criteron</a>
+                    <a href="https://rihenperry.github.io/tag/nodejs">nodejs</a>
+                    <a href="https://rihenperry.github.io/tag/postgresql">postgresql</a>
+                    <a href="https://rihenperry.github.io/tag/generators">generators</a>
+                    <a href="https://rihenperry.github.io/tag/btc">btc</a>
+                    <a href="https://rihenperry.github.io/tag/satoshi">satoshi</a>
+                    <a href="https://rihenperry.github.io/tag/kelly-criteron">kelly criteron</a>
             </p>
           </div>
         </article>
@@ -236,13 +236,13 @@ many koa-* middlewares in its codebase.Its simple and pluggable.</p>
 <footer class="blog-footer">
 
     <ul class="nav">
-                    <li><a href="https://rihbyne.github.io/blog">posts</a></li>
+                    <li><a href="https://rihenperry.github.io/blog">posts</a></li>
                     <li class="dots">.</li>
-                    <li><a href="https://rihbyne.github.io/diy">solos</a></li>
+                    <li><a href="https://rihenperry.github.io/diy">solos</a></li>
                     <li class="dots">.</li>
-                    <li><a href="https://rihbyne.github.io/downloadables/resume.pdf">resume</a></li>
+                    <li><a href="https://rihenperry.github.io/downloadables/resume.pdf">resume</a></li>
                     <li class="dots">.</li>
-                    <li><a href="https://rihbyne.github.io/https://goodreads.com/rihanpereira">reading</a></li>
+                    <li><a href="https://rihenperry.github.io/https://goodreads.com/rihanpereira">reading</a></li>
                     <li class="dots">.</li>
     </ul>
 
